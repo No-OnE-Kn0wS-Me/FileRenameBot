@@ -22,8 +22,10 @@ class Translation(object):
     CUSTOM_CAPTION_UL_FILE = " "
     NO_CUSTOM_THUMB_NAIL_FOUND = "No Custom ThumbNail found,SED🤒"
     USER_ADDED_TO_DB = "User <a href='tg://user?id={}'>{}</a> added to {} till {}."
+    IFLONG_FILE_NAME = """You Gotta Be Kidding Me...Decrease The Number Of Letters😆😉"""
     HELP_USER = """Ohh You Want Help?? 😅
     
-1. Send me any Telegram File.
-2. Reply to that message with /rename NEWNAME.EXTENSION"""
+1.🔹 <b>Send me any Telegram File.</b>
+2.🔹 <b>Reply to that message with /rename New file name.extnsion</b>
+3.🔹 <b>I Can Also Convert Streamable Videos Into Document</b>"""
 
