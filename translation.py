@@ -4,7 +4,7 @@ class Translation(object):
 <b>Send me any Telegram file and reply to that file with /rename NewName.extn</b>
 <b>Bot Maintained By: @Mai_bOTs</b>"""
 
-    RENAME_403_ERR = "What Are You Doing? You are Banned"
+    RENAME_403_ERR = "What Are You Doing? Bruuh!!"
     ABS_TEXT = "What Are You Trying To Do,Mate?"
     UPGRADE_TEXT = "CONTACT @No_OnE_Kn0wS_Me "
     DOWNLOAD_START = "<b>Downloading To My server !! pls Wait</b>"
@@ -14,8 +14,8 @@ class Translation(object):
     AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS = "Downloaded in {} seconds.\nUploaded in {} seconds"
     NOT_AUTH_USER_TEXT = "CONTACT @No_OnE_Kn0wS_Me "
     NOT_AUTH_USER_TEXT_FILE_SIZE = "IF You Got This Message You Should Contact @No_OnE_Kn0wS_Me "
-    SAVED_CUSTOM_THUMB_NAIL = "<b>Custom thumbnail Saved ✅ This Is Permanent Until</b> /deletethumbnail❤"
-    DEL_ETED_CUSTOM_THUMB_NAIL = "Custom thumbnail cleared succesfully🤦"
+    SAVED_CUSTOM_THUMB_NAIL = "<b>thumbnail Saved ✅ This Is Permanent Until</b> /deletethumbnail❤"
+    DEL_ETED_CUSTOM_THUMB_NAIL = "thumbnail cleared succesfully🤦"
     FF_MPEG_DEL_ETED_CUSTOM_MEDIA = "Media cleared succesfully."
     SAVED_RECVD_DOC_FILE = "<b>File Downloaded Successfully 😎</b>"
     REPLY_TO_DOC_FOR_RENAME_FILE = "<b>Please Reply To An File With /rename fil name extension To rename a file</b>"
@@ -23,6 +23,7 @@ class Translation(object):
     NO_CUSTOM_THUMB_NAIL_FOUND = "No Custom ThumbNail found,SED🤒"
     USER_ADDED_TO_DB = "User <a href='tg://user?id={}'>{}</a> added to {} till {}."
     IFLONG_FILE_NAME = """You Gotta Be Kidding Me...Decrease The Number Of Letters😆😉"""
+    ABOUT_ME = """<b>Me >> /n An Telegram File Renamer Bot Which Can Rename A Telegram Files. \n You Can Set Permanent Thumbnail For The File So You Don't Have To Send Thumbnails All The Time!!</b> \n\n `Plan`: <b>Free User</b> \n `Plan Expires On` : <b>You Can Use Meh Until I'm Ded ^_^</b>"""
     HELP_USER = """Ohh You Want Help?? 😅
     
 1.🔹 <b>Send me any Telegram File.</b>
