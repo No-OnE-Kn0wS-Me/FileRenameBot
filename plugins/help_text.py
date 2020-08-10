@@ -38,13 +38,11 @@ async def help_user(bot, update):
     await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.HELP_USER,
-        parse_mode="html",
-        disable_web_page_preview=True,
         reply_to_message_id=update.message_id
     )
 
 @pyrogram.Client.on_message(pyrogram.Filters.command(["about"]))
-async def help_user(bot, update):
+async def about_meh(bot, update):
     # logger.info(update)
     TRChatBase(update.from_user.id, update.text, "/about")
     await bot.send_message(
