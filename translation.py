@@ -1,7 +1,6 @@
 class Translation(object):
     START_TEXT = """ <b>I'm A Simple File Renamer+File To Video Converter Bot With Permanent Thumbnail support!💯</b> \n
 
-<b>Send me any Telegram file and reply to that file with</b> /rename NewFileName.extn \n          Or     \n <b> Send A document and reply to that file with /c2v For Converting it into video</b>  \n
 <b>Bot Maintained By: @Mai_bOTs</b> \n
 <b>Do /help for more...</b> \n
 """
@@ -21,7 +20,7 @@ class Translation(object):
     FF_MPEG_DEL_ETED_CUSTOM_MEDIA = "Media cleared succesfully."
     SAVED_RECVD_DOC_FILE = "<b>File Downloaded Successfully 😎</b>"
     REPLY_TO_DOC_FOR_RENAME_FILE = "<b>Please Reply To An File With /rename fil name extension To rename a file</b>"
-    REPLY_TO_DOC_FOR_C2V = "<b> Please Reply To An File With /c2v To Convert It Into Streamable Vudeo File</b>"
+    REPLY_TO_DOC_FOR_C2V = "<b> Please Reply To An File With /c2v To Convert It Into Streamable video File</b>"
     CUSTOM_CAPTION_UL_FILE = " "
     NO_CUSTOM_THUMB_NAIL_FOUND = "No Thumbnail found,SED🤒"
     USER_ADDED_TO_DB = "User <a href='tg://user?id={}'>{}</a> added to {} till {}."
@@ -32,5 +31,5 @@ class Translation(object):
 1.🔹 <b>Send me any Telegram File.</b> \n
 2.🔹 <b>Reply to that message with /rename New file name.extnsion</b> \n
 3.🔹 <b> Send A Photo to make it as permanent Thumbnail</b> \n
-4.🔹 <b> I Can Also Convert Files Into Video through /c2v Command </b>   \n Made By @mai_boTs"""
+4.🔹 <b> I Can Also Convert Files Into Video through /c2v Command </b>   \n \n <b>Made With Love By: @mai_boTs</b>"""
 
