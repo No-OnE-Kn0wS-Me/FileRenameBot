@@ -35,7 +35,7 @@ from database.database import *
 
 
 @pyrogram.Client.on_message(pyrogram.Filters.video, document
-async def rename_doc(bot, update):
+async def rename_doc(bot, message):
     await bot.send_message(
         chat_id=message.chat.id,
         text=f"<b> Now Send me the new file name for it! </b> \n like: New Filename.mkv",
