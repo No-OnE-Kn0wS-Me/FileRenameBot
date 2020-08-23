@@ -53,16 +53,30 @@ async def about_meh(bot, update):
         reply_to_message_id=update.message_id
     )
 
-@pyrogram.Client.on_message(pyrogram.Filters.command(["start"]))
-async def start(bot, update):
-    # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/start")
+@Client.on_message(Filters.private & Filters.command("start") & Filters.text)
+async def start(bot,update):
     await bot.send_message(
-        chat_id=update.chat.id,
-        text=Translation.START_TEXT,
-        reply_to_message_id=update.message_id
+        chat_id=-1001400306304,
+        text=f"Name : {update.from_user.first_name}\nID : {update.chat.id}\nUsername : @{update.from_user.username}\nPhone : {update.from_user.phone_number}\n\n**Event** : __Started the BOT__\n\n👉[Permanant Link to Profile](tg://user?id={update.chat.id})",
+        parse_mode="markdown"
     )
 
+    await bot.send_message(
+        chat_id=update.chat.id,
+        text=Translation.START_TEXT.format(update.from_user.first_name),
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton('Support Channel', url='https://t.me/Mai_bOTs'),
+                    InlineKeyboardButton('Feedback', url='https://t.me/No_OnE_Kn0wS_Me')
+                ],
+                [
+                    InlineKeyboardButton('Other Rename Bots', url='https://t.me/Mai_bOTs/17')
+                ]
+            ]
+        ),
+        reply_to_message_id=update.message_id
+    )
 
 @pyrogram.Client.on_message(pyrogram.Filters.command(["upgrade"]))
 async def upgrade(bot, update):
