@@ -1,8 +1,11 @@
 class Translation(object):
     START_TEXT = """ <b>I'm A Simple File Renamer Bot With Permanent Thumbnail support!💯</b>
 
-<b>Send me any Telegram file and reply to that file with /rename NewName.extn</b>
-<b>Bot Maintained By: @Mai_bOTs</b>"""
+<b>I can also convert Files Into Videos</b>
+<b>Send me any Telegram file and reply to that file with</b> /rename NewFileName.extn
+<b>Bot Maintained By: @Mai_bOTs</b>
+Do /help for more... 
+"""
 
     RENAME_403_ERR = "What Are You Doing? Bruuh!!"
     ABS_TEXT = "What Are You Trying To Do,Mate?"
@@ -23,10 +26,11 @@ class Translation(object):
     NO_CUSTOM_THUMB_NAIL_FOUND = "No Custom ThumbNail found,SED🤒"
     USER_ADDED_TO_DB = "User <a href='tg://user?id={}'>{}</a> added to {} till {}."
     IFLONG_FILE_NAME = """You Gotta Be Kidding Me...Decrease The Number Of Letters😆😉"""
-    ABOUT_ME = """<b>Meh : \n An Telegram File Renamer Bot Which Can Rename A Telegram Files. \n You Can Set Permanent Thumbnail For The File So You Don't Have To Send Custom Thumbs All The Time.\n Join @Mai_BoTs If You Found Meh Useful</b>"""
+    ABOUT_ME = """<b>Meh : \n An Telegram File Renamer Bot Which Can Rename A Telegram Files. \n You Can Set Permanent Thumbnail For The File So You Don't Have To Send Custom Thumbs All The Time.\n \n i can also convert files into videos \n Join @Mai_BoTs If You Found Meh Useful</b>"""
     HELP_USER = """Ohh You Want Help?? 😅
     
 1.🔹 <b>Send me any Telegram File.</b>
 2.🔹 <b>Reply to that message with /rename New file name.extnsion</b>
-3.🔹 <b>I Can Also Convert Streamable Videos Into Document</b>"""
+3.🔹 <b> Send A Photo to make it as permanent Thumbnail</b>
+4.🔹 <b>I Can Also Convert Files Into Video through /c2v </b>"""
 
