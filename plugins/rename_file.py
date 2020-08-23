@@ -34,18 +34,13 @@ from PIL import Image
 from database.database import *
 
 
-@pyrogram.Client.on_message(pyrogram.Filters.command(["rename"]))
-async def rename_doc(bot, update):
-    if update.from_user.id in Config.BANNED_USERS:
-        await bot.delete_messages(
-            chat_id=update.chat.id,
-            message_ids=update.message_id,
-            revoke=True
-        )
-        return
-    TRChatBase(update.from_user.id, update.text, "rename")
-    if (" " in update.text) and (update.reply_to_message is not None):
-        cmd, file_name = update.text.split(" ", 1)
+@pyrogram.Client.on_message(pyrogram.Filters.video, document
+async def rename_doc(bot, update, client):
+    await client.send_message(
+        chat_id=message.chat.id,
+        text=f"<b> Now Send me the new file name for it! </b> \n like: New Filename.mkv",
+        reply_to_message_id=message.message_id
+    )
         if len(file_name) > 64:
             await update.reply_text(
                 Translation.IFLONG_FILE_NAME.format(
