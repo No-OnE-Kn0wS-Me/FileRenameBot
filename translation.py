@@ -1,9 +1,9 @@
 class Translation(object):
     START_TEXT = """ <b>I'm A Simple File Renamer+File To Video Converter Bot With Permanent Thumbnail support!💯</b> \n
 
-<b>Send me any Telegram file and reply to that file with</b> '/rename NewFileName.extn' \n
+<b>Send me any Telegram file and reply to that file with</b> /rename NewFileName.extn \n          Or     \n <b> Send A document and reply to that file with /c2v For Converting it into video</b>  \n
 <b>Bot Maintained By: @Mai_bOTs</b> \n
-<b>Do /help for more...</b> 
+<b>Do /help for more...</b> \n
 """
 
     RENAME_403_ERR = "What Are You Doing? Bruuh!!"
@@ -32,5 +32,5 @@ class Translation(object):
 1.🔹 <b>Send me any Telegram File.</b> \n
 2.🔹 <b>Reply to that message with /rename New file name.extnsion</b> \n
 3.🔹 <b> Send A Photo to make it as permanent Thumbnail</b> \n
-4.🔹 <b> I Can Also Convert Files Into Video through /c2v Command </b>  \n"""
+4.🔹 <b> I Can Also Convert Files Into Video through /c2v Command </b>   \n Made By @mai_boTs"""
 
