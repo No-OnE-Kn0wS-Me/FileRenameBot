@@ -50,7 +50,7 @@ def progress_for_pyrogram(client, current, total, ud_type, message_id, chat_id, 
         )
         try:
             await message.edit(
-                    text="{}\n {}".format(
+                text="{}\n {}".format(
                     ud_type,
                     tmp
                 )
