@@ -33,16 +33,16 @@ from PIL import Image
 
 
 @pyrogram.Client.on_message(pyrogram.Filters.command(["c2a"]))
-def convert_to_audio(bot, update):
-    TRChatBase(update.from_user.id, update.text, "c2a")
-    if str(update.from_user.id) not in Config.BANNED_USERS:
+async def convert_to_audio(bot, update):
+    if update.from_user.id in Config.BANNED_USERS:
         await bot.send_message(
             chat_id=update.chat.id,
             text=Translation.BANNED_USER_TEXT,
             reply_to_message_id=update.message_id
         )
         return
-    if (update.reply_to_message is not None) and (update.reply_to_message.media is not None) :
+    TRChatBase(update.from_user.id, update.text, "c2a")
+    if update.reply_to_message is not None:
         description = Translation.CUSTOM_CAPTION_UL_FILE
         download_location = Config.DOWNLOAD_LOCATION + "/"
         a = await bot.send_message(
