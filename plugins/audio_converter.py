@@ -66,7 +66,7 @@ def convert_to_audio(bot, update):
             # don't care about the extension
             # convert video to audio format
             audio_file_location_path = the_real_download_location
-          await bot.edit_message_text(
+            bot.edit_message_text(
                 text=Translation.UPLOAD_START,
                 chat_id=update.chat.id,
                 message_id=a.message_id
