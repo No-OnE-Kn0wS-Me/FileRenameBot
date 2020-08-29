@@ -26,9 +26,7 @@ async def progress_for_pyrogram(
     current,
     total,
     ud_type,
-    message, 
-    chat_id, 
-    client, 
+    message,
     start
 ):
     now = time.time()
