@@ -102,7 +102,7 @@ def convert_to_audio(bot, update):
                 # https://pillow.readthedocs.io/en/3.1.x/reference/Image.html#create-thumbnails
             # try to upload file
             c_time = time.time()
-           await bot.send_audio(
+            bot.send_audio(
                 chat_id=update.chat.id,
                 audio=audio_file_location_path,
                 caption=description,
