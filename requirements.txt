@@ -5,7 +5,6 @@ hachoir
 numpy
 Pillow
 pyrogram==0.12.0
-ffmpeg-python
 https://github.com/pyrogram/pyrogram/archive/asyncio-dev.zip
 requests
 tgcrypto
