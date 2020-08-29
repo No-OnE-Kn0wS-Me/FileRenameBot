@@ -49,10 +49,8 @@ def progress_for_pyrogram(client, current, total, ud_type, message_id, chat_id, 
             estimated_total_time if estimated_total_time != '' else "0 s"
         )
         try:
-            client.edit_message_text(
-                chat_id,
-                message_id,
-                text="{}\n {}".format(
+            await message.edit(
+                    text="{}\n {}".format(
                     ud_type,
                     tmp
                 )
