@@ -22,7 +22,15 @@ else:
 from translation import Translation
 
 
-def progress_for_pyrogram(client, current, total, ud_type, message_id, chat_id, start):
+async def progress_for_pyrogram(
+    current,
+    total,
+    ud_type,
+    message, 
+    chat_id, 
+    client, 
+    start
+):
     now = time.time()
     diff = now - start
     if round(diff % 10.00) == 0 or current == total:
