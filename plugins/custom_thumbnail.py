@@ -22,12 +22,8 @@ else:
 # the Strings used for this "thing"
 from translation import Translation
 
-from plugins.help_text import help_user
-from plugins.help_text import cb_handler
-
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
-from pyrogram import Client, Filters, InlineKeyboardMarkup, InlineKeyboardButton
 
 from helper_funcs.chat_base import TRChatBase
 import database.database as sql
@@ -125,54 +121,6 @@ async def save_photo(bot, update):
         )
 
 
-@pyrogram.Client.on_message(pyrogram.Filters.command(["showthumb"]))
-async def show_thumb(bot, update):
-    TRChatBase(update.from_user.id, update.text, "showthumb")
-    thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
-    if not os.path.exists(thumb_image_path):
-        mes = await sql.thumb(update.from_user.id)
-        if mes != None:
-            m = await bot.get_messages(update.chat.id, mes.msg_id)
-            await m.download(file_name=thumb_image_path)
-            thumb_image_path = thumb_image_path
-#        else:
-#            thumb_image_path = None    
-    
-    if thumb_image_path is not None:
-        try:
-            await bot.send_photo(
-                chat_id=update.chat.id,
-                photo=thumb_image_path,
-                caption=Translation.SHOW_CUSTOM_THUMB_NAIL,
-                parse_mode="html",
-                disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton('❓️Help❓️', callback_data="help_back"),
-                            InlineKeyboardButton('🔐Close🔐', callback_data="close")
-                        ]
-                    ]
-               ),
-               reply_to_message_id=update.message_id
-           )        
-        except:
-            await bot.send_message(
-                chat_id=update.chat.id,
-                text=Translation.NO_CUSTOM_THUMB_NAIL_FOUND,
-                parse_mode="html",
-                disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton('❓️Help❓️', callback_data="help_back"),
-                            InlineKeyboardButton('🔐Close🔐', callback_data="close")
-                        ]
-                    ]
-               ),
-               reply_to_message_id=update.message_id
-           )
-
 @pyrogram.Client.on_message(pyrogram.Filters.command(["deletethumbnail"]))
 async def delete_thumbnail(bot, update):
     if update.from_user.id in Config.BANNED_USERS:
@@ -186,6 +134,7 @@ async def delete_thumbnail(bot, update):
     download_location = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id)
     try:
         os.remove(download_location + ".jpg")
+        os.remove(thumb_image)
         # os.remove(download_location + ".json")
         await sql.del_thumb(update.from_user.id)
     except:
@@ -193,15 +142,5 @@ async def delete_thumbnail(bot, update):
     await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.DEL_ETED_CUSTOM_THUMB_NAIL,
-        parse_mode="html",
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton('❓️Help❓️', callback_data="help_back"),
-                    InlineKeyboardButton('🔐Close🔐', callback_data="close")
-                ]
-            ]
-        ),
         reply_to_message_id=update.message_id
     )
