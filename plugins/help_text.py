@@ -59,14 +59,10 @@ async def about_meh(bot, update):
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
     )
-
-@Client.on_message(Filters.private & Filters.command("start") & Filters.text)
-async def start(bot,update):
-    await bot.send_message(
-        chat_id=Config.CHANNEL_ID,
-        text=f"Name : {update.from_user.first_name}\nID : {update.chat.id}\nUsername : @{update.from_user.username}\nPhone : {update.from_user.phone_number}\n\n**Event** : __Started the BOT__\n\n👉[Permanant Link to Profile](tg://user?id={update.chat.id})",
-        parse_mode="markdown"
-    )
+@pyrogram.Client.on_message(pyrogram.Filters.command(["start"]))
+async def start(bot, update):
+    # logger.info(update)
+    TRChatBase(update.from_user.id, update.text, "/start")
 
     await bot.send_message(
         chat_id=update.chat.id,
