@@ -23,11 +23,12 @@ class Translation(object):
     REPLY_TO_DOC_FOR_RENAME_FILE = "<b>Please Reply To An File With /rename filename extension To rename a file</b>"
     REPLY_TO_DOC_FOR_C2V = "<b> Please Reply To An File With /c2v To Convert It Into Streamable video File</b>"
     REPLY_TO_DOC_FOR_C2A = "<b> Please Reply To An File/video With /c2a To Convert It Into Audio File</b>"
-    CUSTOM_CAPTION_UL_FILE = " "
+    CUSTOM_CAPTION_UL_FILE = "By @Mixxrenamebot"
     NO_CUSTOM_THUMB_NAIL_FOUND = "No Thumbnail found,SED🤒"
     USER_ADDED_TO_DB = "User <a href='tg://user?id={}'>{}</a> added to {} till {}."
     IFLONG_FILE_NAME = """You Gotta Be Kidding Me...Decrease The Number Of Letters😆😉"""
     ABOUT_ME = """<b>Meh : \n An Telegram File Renamer Bot Which Can Rename A Telegram Files.\n You Can Set Permanent Thumbnail For The File So You Don't Have To Send Custom Thumbs All The Time.\n \n i can also convert files into videos \n Join @BotDunia If You Found Meh Useful</b>"""
+    UPLOAD_TEXT = """Please click below to join Upload Bot"""
     HELP_USER = """Ohh You Want Help?? 😅
     
 1.🔹 <b>Send me any Telegram File.</b> \n
