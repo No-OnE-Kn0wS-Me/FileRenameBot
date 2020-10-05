@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# (c) Shrimadhav U K
+# (c) Shrimadhav | Mrvishal2k2
 
 # the logging things
 import logging
@@ -70,12 +70,8 @@ async def start(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('Support Channel', url='https://t.me/Mai_bOTs'),
-                    InlineKeyboardButton('Feedback', url='https://t.me/No_OnE_Kn0wS_Me')
-                ],
-                [
-                    InlineKeyboardButton('Other Bots', url='https://t.me/Mai_bOTs/17'),
-                    InlineKeyboardButton('Source', url='https://github.com/No-OnE-Kn0wS-Me/FileRenameBot')
+                    InlineKeyboardButton('Support Channel', url='https://t.me/BotDunia'),
+                    InlineKeyboardButton('Feedback', url='https://t.me/Mrvishal2k2')
                 ]
             ]
         ),
@@ -92,4 +88,21 @@ async def upgrade(bot, update):
         parse_mode="html",
         reply_to_message_id=update.message_id,
         disable_web_page_preview=True
+    )
+
+@pyrogram.Client.on_message(pyrogram.Filters.command(["upload"]))
+async def upgrade(bot, update):
+    # logger.info(update)
+    TRChatBase(update.from_user.id, update.text, "/upload")
+    await bot.send_message(
+        chat_id=update.chat.id,
+        text=Translation.UPLOAD_TEXT,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton('MixxUploadBot', url='https://t.me/Mixxuploaderbot')
+                ]
+            ]
+        ),
+        reply_to_message_id=update.message_id
     )
