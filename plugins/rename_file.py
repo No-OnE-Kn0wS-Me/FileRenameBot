@@ -44,7 +44,7 @@ async def cus_name(bot, message):
     if (message.reply_to_message.reply_markup) and isinstance(message.reply_to_message.reply_markup, ForceReply):
         asyncio.create_task(rename_doc(bot, message))     
     else:
-        print('i can't see any file here')
+        print('No media present')
 
     
 async def rename_doc(bot, message):
