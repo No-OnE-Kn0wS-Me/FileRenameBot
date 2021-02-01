@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 import os
 import sqlite3
-import pyrogram import filters
+from pyrogram import filters
 from pyrogram import (
     Client,
     InlineKeyboardMarkup,
