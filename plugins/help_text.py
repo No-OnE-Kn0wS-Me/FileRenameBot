@@ -10,6 +10,7 @@ logger = logging.getLogger(__name__)
 
 import os
 import sqlite3
+import pyrogram 
 from pyrogram import (
     Client,
     Filters,
