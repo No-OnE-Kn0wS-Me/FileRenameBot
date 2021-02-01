@@ -60,7 +60,8 @@ async def rename_doc(bot, message):
     if media.empty:
         await message.reply_text('Why did you delete that file? ', True)
         return
-        
+    filetype = media.document or media.video or media.audio or media.voice or media.video_note
+      
 
     await bot.delete_messages(
         chat_id=message.chat.id,
