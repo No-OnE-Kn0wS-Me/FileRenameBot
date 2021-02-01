@@ -11,12 +11,9 @@ logger = logging.getLogger(__name__)
 import os
 import sqlite3
 from pyrogram import filters
-from pyrogram import (
-    Client,
-    InlineKeyboardMarkup,
-    InlineKeyboardButton
-    
-)
+from pyrogram import Client
+from pyrogram import InlineKeyboardButton
+from pyrogram import InlineKeyboardMarkup
 
 
 # the secret configuration specific things
