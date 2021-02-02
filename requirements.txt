@@ -4,7 +4,7 @@ hachoir
 git+git://github.com/google/chatbase-python.git
 numpy
 Pillow
-Pyrogram 
+https://github.com/prgofficial/pyrogram/archive/asyncio-dev.zip 
 requests
 tgcrypto
 sqlalchemy
