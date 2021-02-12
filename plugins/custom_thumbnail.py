@@ -113,7 +113,7 @@ async def show_thumb(bot, update):
                 photo=thumb_image_path,
                 reply_to_message_id=update.message_id
             )
-        except:
+    except:
         pass
 
     await bot.send_message(
