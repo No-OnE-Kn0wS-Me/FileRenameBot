@@ -114,10 +114,10 @@ async def show_thumb(bot, update):
                 reply_to_message_id=update.message_id
             )
         except:
-            pass
-    else:
-        await bot.send_message(
-            chat_id=update.chat.id,
-            text=Translation.NO_THUMB_FOUND,
-            reply_to_message_id=update.message_id
-        )
+        pass
+
+    await bot.send_message(
+        chat_id=update.chat.id,
+        text=Translation.NO_THUMB_FOUND,
+        reply_to_message_id=update.message_id
+    )
