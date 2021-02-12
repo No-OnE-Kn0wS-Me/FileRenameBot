@@ -112,7 +112,7 @@ async def show_thumb(bot, update):
                 chat_id=update.chat.id,
                 photo=thumb_image_path,
                 reply_to_message_id=update.message_id
-            )
+        )
     else:
         await bot.send_message(
             chat_id=update.chat.id,
