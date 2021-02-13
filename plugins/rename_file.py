@@ -87,7 +87,7 @@ async def rename_doc(bot, update):
             logger.info(the_real_download_location)
             thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
             if not os.path.exists(thumb_image_path):
-                mes = await get_thumb(update.from_user.id)
+                mes = await thumb(update.from_user.id)
                 if mes != None:
                     m = await bot.get_messages(update.chat.id, mes.msg_id)
                     await m.download(file_name=thumb_image_path)
