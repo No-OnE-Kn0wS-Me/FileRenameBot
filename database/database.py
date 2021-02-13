@@ -55,7 +55,7 @@ async def del_thumb(id):
         SESSION.delete(msg)
         SESSION.commit()
 
-async def get_thumb(id):
+async def thumb(id):
     try:
         t = SESSION.query(Thumbnail).get(id)
         return t
