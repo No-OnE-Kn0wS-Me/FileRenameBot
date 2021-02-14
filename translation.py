@@ -6,15 +6,15 @@ class Translation(object):
 """
 
     RENAME_403_ERR = "What Are You Doing? Bruuh!!"
-    BANNED_USER_TEXT = "Sorry!! But Mai Owner As Banned You From Using This Service. That Means You Can't Run Meh Now! \n \n Contact : @No_OnE_Kn0wS_Me For more Details.. " 
+    BANNED_USER_TEXT = "Sorry!! Owner As Banned You From Using This Service. \n \n Contact : https://t.me/joinchat/AAAAAEkPrah1asIHMBiURA For more Details.. " 
     ABS_TEXT = "What Are You Trying To Do,Mate?"
-    UPGRADE_TEXT = "CONTACT @No_OnE_Kn0wS_Me "
+    UPGRADE_TEXT = "CONTACT https://t.me/joinchat/AAAAAEkPrah1asIHMBiURA "
     DOWNLOAD_START = "<b>Downloading To My server !! pls Wait</b>"
     UPLOAD_START = "<b>Downloading Completed Now I'm Uploading Into TG</b>"
     RCHD_TG_API_LIMIT = "Downloaded in {} seconds.\nDetected File Size: {}\nSorry WTF Do You Think! I'll Upload It?"
-    AFTER_SUCCESSFUL_UPLOAD_MSG = "**Thank you for Using Me SHARE > ❤️**"
+    AFTER_SUCCESSFUL_UPLOAD_MSG = "**Thank you for Using Me Join: https://t.me/joinchat/AAAAAEkPrah1asIHMBiURA > ❤️**"
     AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS = "Downloaded in {} seconds.\nUploaded in {} seconds"
-    NOT_AUTH_USER_TEXT = "CONTACT @No_OnE_Kn0wS_Me "
+    NOT_AUTH_USER_TEXT = "CONTACT https://t.me/joinchat/AAAAAEkPrah1asIHMBiURA "
     NOT_AUTH_USER_TEXT_FILE_SIZE = "IF You Got This Message You Should Contact @No_OnE_Kn0wS_Me "
     SAVED_CUSTOM_THUMB_NAIL = "<b>thumbnail Saved ✅ This Is Permanent Until</b> /delthumb ❤"
     DEL_ETED_CUSTOM_THUMB_NAIL = "thumbnail cleared succesfully🤦"
@@ -33,5 +33,5 @@ class Translation(object):
 1.🔹 <b>Send me any Telegram File.</b> \n
 2.🔹 <b>Reply to that message with /rename New file name.extnsion</b> \n
 3.🔹 <b> Send A Photo to make it as permanent Thumbnail</b> \n
-4.🔹 <b> I Can Also Convert Files Into Video through /c2v Command </b>   \n \n <b>Made With Love By: @MaI_BoTs </b>"""
+4.🔹 <b> I Can Also Convert Files Into Video through /c2v Command </b>   \n \n <b>Made With Love By: https://t.me/joinchat/AAAAAEkPrah1asIHMBiURA </b>"""
 
