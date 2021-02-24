@@ -40,5 +40,5 @@ class Translation(object):
 2.🔹 <b>Reply to that message with /rename New file name.extnsion</b> \n
 3.🔹 <b> Send A Photo to make it as permanent Thumbnail</b> \n
 4.🔹 <b> I Can Also Convert Files Into Video through /c2v Command </b>   \n
-5.🔹 <b> Send Me Any Zee5 Url And I'll Upload It Into Telegram \n \n <b>Made With Love By: @MaI_BoTs </b>"""
+5.🔹 <b> Send Me Any Zee5 Url And I'll Upload It Into Telegram </b> \n \n <b>Made With Love By: @MaI_BoTs </b>"""
 
