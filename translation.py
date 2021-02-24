@@ -11,7 +11,7 @@ class Translation(object):
     UPGRADE_TEXT = "CONTACT @No_OnE_Kn0wS_Me "
     DOWNLOAD_START = "<b>Downloading To My server !! pls Wait</b>"
     UPLOAD_START = "<b>Downloading Completed Now I'm Uploading Into TG</b>"
-    RCHD_TG_API_LIMIT = "Downloaded in {} seconds.\nDetected File Size: {}\nSorry WTF Do You Think! I'll Upload It?"
+    RCHD_TG_API_LIMIT = "Downloaded in {} seconds.\nDetected File Size: {}\nSorry Do You Think! I'll Upload It?"
     AFTER_SUCCESSFUL_UPLOAD_MSG = "**Thank you for Using Me SHARE > ❤️**"
     AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS = "Downloaded in {} seconds.\nUploaded in {} seconds"
     NOT_AUTH_USER_TEXT = "CONTACT @No_OnE_Kn0wS_Me "
