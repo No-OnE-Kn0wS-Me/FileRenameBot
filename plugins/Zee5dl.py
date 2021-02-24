@@ -176,14 +176,14 @@ async def zee5_capture(bot, update):
                 str(update.from_user.id) + ".jpg",
                 Config.CHUNK_SIZE,
                 None,  # bot,
-                script.DOWNLOAD_START,
+                Translation.DOWNLOAD_START,
                 update.message_id,
                 update.chat.id
             )   
  
             await bot.send_message(
                 chat_id=update.chat.id,
-                text=script.FORMAT_SELECTION.format(thumbnail),
+                text=Translation.FORMAT_SELECTION.format(thumbnail),
                 reply_markup=reply_markup,
                 parse_mode="html",
                 reply_to_message_id=update.message_id
@@ -227,11 +227,11 @@ async def zee5_execute(bot, update):
         custom_file_name = videoname + ".mp4"
 
         await bot.edit_message_text(
-            text=script.DOWNLOAD_START,
+            text=Translation.DOWNLOAD_START,
             chat_id=update.message.chat.id,
             message_id=update.message.message_id
         )
-        description = script.CUSTOM_CAPTION_UL_FILE.format(newname=custom_file_name)
+        description = Translation.CUSTOM_CAPTION_UL_FILE.format(newname=custom_file_name)
 
         tmp_directory_for_each_user = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id)
         if not os.path.isdir(tmp_directory_for_each_user):
@@ -312,7 +312,7 @@ async def zee5_execute(bot, update):
             if file_size > Config.TG_MAX_FILE_SIZE:
                 await bot.edit_message_text(
                     chat_id=update.message.chat.id,
-                    text=script.RCHD_TG_API_LIMIT.format(time_taken_for_download, humanbytes(file_size)),
+                    text=Translation.RCHD_TG_API_LIMIT.format(time_taken_for_download, humanbytes(file_size)),
                     message_id=update.message.message_id
                 )
             else:
