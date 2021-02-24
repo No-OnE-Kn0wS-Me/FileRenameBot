@@ -1,15 +1,17 @@
-## Rename Bot + File To Video Converter Bot 
+## Multipurpose Bot 
 
-An Open Source Telegram Rename Bot With Permanent Thumbnail Support Also Have The Future To Convert Files Into Video 
+An Multi purpose Bot Which Can :-
+* ✅Rename Telegram Files 
+* ✅Convert Files into Video 
+* ✅ Download Videos From Zee5 ( Thanks To [TroJanzHEX](https://github.com/TroJanzHEX/Zee5-Downloader) For the code) 
 
-
-### Installation
 
 
 ### You can tap the Deploy To Heroku button below to deploy straight to Heroku!
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/No-OnE-Kn0wS-Me/FileRenameBot)
 
-For Queries and support, check [Telegram ](https://telegram.dog/Mai_bOTs)
+If you Find Any Bugs Or Wanto Give Your Feedbacks Then Kindly Contact Us Through [Telegram ](https://telegram.dog/No_OnE_Kn0wS_Me) 
+Also Support Our Channel [Mai_bOTs](https://telegram.dog/Mai_bOTs) 
 
 ## Credits, and Thanks to Beloved Developers ;
 
