@@ -54,7 +54,7 @@ async def zee5_capture(bot, update):
 
     logger.info(update.from_user.id)
     
-    if "AnyDLBot" in update.text:
+    if "Zee5" in update.text:
         try:
             w = update.text 
             req1 = requests.get("https://useraction.zee5.com/tokennd").json()
