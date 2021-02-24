@@ -317,7 +317,7 @@ async def zee5_execute(bot, update):
                 )
             else:
                 await bot.edit_message_text(
-                    text=script.UPLOAD_START,
+                    text=Translation.UPLOAD_START,
                     chat_id=update.message.chat.id,
                     message_id=update.message.message_id
                 )
@@ -385,7 +385,7 @@ async def zee5_execute(bot, update):
                         reply_to_message_id=update.message.reply_to_message.message_id,
                         progress=progress_for_pyrogram,
                         progress_args=(
-                            script.UPLOAD_START,
+                            Translation.UPLOAD_START,
                             update.message,
                             start_time
                         )
@@ -405,7 +405,7 @@ async def zee5_execute(bot, update):
                         reply_to_message_id=update.message.reply_to_message.message_id,
                         progress=progress_for_pyrogram,
                         progress_args=(
-                            script.UPLOAD_START,
+                            Translation.UPLOAD_START,
                             update.message,
                             start_time
                         )
@@ -423,8 +423,8 @@ async def zee5_execute(bot, update):
                     pass
 
                 await bot.edit_message_text(
-                    text=script.AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS,
-                    reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="🙌🏻 SHARE ME 🙌🏻", url="tg://msg?text=%2A%2AHai%20%E2%9D%A4%EF%B8%8F%2C%2A%2A%20%0A__Today%20i%20just%20found%20out%20an%20intresting%20and%20Powerful__%20%2A%2AZee5%20Downloader%20Bot%2A%2A%20__for%20Free%F0%9F%A5%B0.__%20%20%0A%2A%2ABot%20Link%20%3A%20%40Zee5HEXBot%2A%2A%20%F0%9F%94%A5")]]),
+                    text=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS,
+                    reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Support Channel", url="https://t.me/Mai_bOTs")]]),
                     chat_id=update.message.chat.id,
                     message_id=update.message.message_id,
                     disable_web_page_preview=True
