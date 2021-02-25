@@ -31,13 +31,11 @@ from hachoir.parser import createParser
 from datetime import datetime
 from PIL import Image
 
-from helper_funcs.display_progress import(
-    progress_for_pyrogram,
-    humanbytes,
-    headers,
-    take_screen_shot,
-    DownLoadFile
-)
+from helper_funcs.display_progress import progress_for_pyrogram
+from helper_funcs.display_progress import humanbytes
+from helper_funcs.display_progress import headers
+from helper_funcs.display_progress import take_screen_shot
+from helper_funcs.display_progress import DownLoadFile
 
 
 
