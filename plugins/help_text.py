@@ -106,3 +106,6 @@ def main():
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler("start", start, run_async=True))
+    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
+
+    
