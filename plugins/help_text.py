@@ -28,9 +28,15 @@ else:
 from translation import Translation
 
 
-
-
 from helper_funcs.chat_base import TRChatBase
+
+help_keyboard = [[InlineKeyboardButton('Support Channel', url='https://t.me/Mai_bOTs'),
+                    InlineKeyboardButton('Feedback', url='https://t.me/No_OnE_Kn0wS_Me')
+                ],
+                [
+                    InlineKeyboardButton('Other Bots', url='https://t.me/Mai_bOTs/17'),
+                    InlineKeyboardButton('Source', url='https://github.com/No-OnE-Kn0wS-Me/FileRenameBot')]]
+help_reply_markup = InlineKeyboardMarkup(help_keyboard)
 
 def GetExpiryDate(chat_id):
     expires_at = (str(chat_id), "Source Cloned User", "1970.01.01.12.00.00")
@@ -65,28 +71,19 @@ async def start(update, context):
     TRChatBase(update.from_user.id, update.text, "/start")
     user = update.message.from_user
     chat_member = context.bot.get_chat_member(
-        chat_id= Config.CHAT_ID, user_id=update.message.chat_id)
+        chat_id='-1001397348422', user_id=update.message.chat_id)
     status = chat_member["status"]
     if(status == 'left'):
         context.bot.send_message(chat_id=update.message.chat_id,
-                                 text=f"Hi {user.first_name}, to use me you have to be a member of the updates channel in order to stay updated with the latest developments.\nPlease click below button to join and /start the bot again.", reply_markup=help_reply_markup)
+                                 text=f"Hi {user.first_name}, You Must Be A Member Of The Support Channel If You Want To Use Me! .\nPlease click below button to join and /start the bot again.", reply_markup=help_reply_markup)
         return
     else:
         context.bot.send_message(chat_id=update.message.chat_id,
-                                 text=f"Hi {user.first_name}!\nI'm Instagram Media Downloader Bot. I can help you to download Stories and IGTV Videos from any public instagram account.\nPlease read the /help before using me.", parse_mode=telegram.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton('Support Channel', url='https://t.me/Mai_bOTs'),
-                    InlineKeyboardButton('Feedback', url='https://t.me/No_OnE_Kn0wS_Me')
-                ],
-                [
-                    InlineKeyboardButton('Other Bots', url='https://t.me/Mai_bOTs/17'),
-                    InlineKeyboardButton('Source', url='https://github.com/No-OnE-Kn0wS-Me/FileRenameBot')
-                ]
-            ]
-        ),
-        reply_to_message_id=update.message_id
-    )
+                                 text=f"Hi {user.first_name}!\n <b>I'm A Simple File Renamer+File To Video Converter Bot With Permanent Thumbnail support!💯</b> \n
+<b>Bot Maintained By: @MaI_BoTs </b> \n 
+<b> I Can Also Download/Upload Files From Zee5</b> \n
+<b>Do /help for more Details ...</b> \n", parse_mode=telegram.ParseMode.HTML, reply_markup=help_reply_markup)
+
 
 
 @pyrogram.Client.on_message(pyrogram.filters.command(["upgrade"]))
