@@ -68,7 +68,7 @@ async def about_meh(bot, update):
         reply_to_message_id=update.message_id
     )
 @pyrogram.Client.on_message(pyrogram.filters.command(["start"]))
-async def start(update, context):
+def start(update, context):
     # logger.info(update)
     user = update.message.from_user
     chat_member = context.bot.get_chat_member(
