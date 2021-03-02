@@ -95,6 +95,6 @@ async def upgrade(bot, update):
         reply_to_message_id=update.message_id,
         disable_web_page_preview=True
     )
-Mai_bOTs = updater.dispatcher
+Mai_bOTs = Updater.dispatcher
 Mai_bOTs.add_handler(CommandHandler("start", start, run_async=True))
   
