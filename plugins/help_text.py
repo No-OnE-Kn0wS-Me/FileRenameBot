@@ -79,10 +79,7 @@ async def start(update, context):
         return
     else:
         context.bot.send_message(chat_id=update.message.chat_id,
-                                 text=f"Hi {user.first_name}!\n <b>I'm A Simple File Renamer+File To Video Converter Bot With Permanent Thumbnail support!💯</b> \n
-<b>Bot Maintained By: @MaI_BoTs </b> \n 
-<b> I Can Also Download/Upload Files From Zee5</b> \n
-<b>Do /help for more Details ...</b> \n", parse_mode=telegram.ParseMode.HTML, reply_markup=help_reply_markup)
+                                 text=f"Hi {user.first_name}!\n <b>I'm A Simple File Renamer+File To Video Converter Bot With Permanent Thumbnail support!💯</b> \n<b>Bot Maintained By: @MaI_BoTs </b> \n <b> I Can Also Download/Upload Files From Zee5</b> \n<b>Do /help for more Details ...</b> \n", parse_mode=telegram.ParseMode.HTML, reply_markup=help_reply_markup)
 
 
 
