@@ -13,7 +13,7 @@ import pyrogram
 import os
 import sqlite3
 from pyrogram import filters
-from pyrogram import Client
+from pyrogram.types import Client
 from pyrogram.types import InlineKeyboardButton
 from pyrogram.types import InlineKeyboardMarkup
 
