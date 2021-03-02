@@ -14,7 +14,8 @@ import os
 import sqlite3
 from pyrogram import filters
 from pyrogram import Client
-from client import message 
+import telegram 
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, run_async 
 from pyrogram.types import InlineKeyboardButton
 from pyrogram.types import InlineKeyboardMarkup
 
