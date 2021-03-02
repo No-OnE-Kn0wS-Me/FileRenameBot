@@ -60,14 +60,20 @@ async def about_meh(bot, update):
         reply_to_message_id=update.message_id
     )
 @pyrogram.Client.on_message(pyrogram.filters.command(["start"]))
-async def start(bot, update):
+async def start(update, context):
     # logger.info(update)
     TRChatBase(update.from_user.id, update.text, "/start")
-
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=Translation.START_TEXT.format(update.from_user.first_name),
-        reply_markup=InlineKeyboardMarkup(
+    user = update.message.from_user
+    chat_member = context.bot.get_chat_member(
+        chat_id= Config.CHAT_ID, user_id=update.message.chat_id)
+    status = chat_member["status"]
+    if(status == 'left'):
+        context.bot.send_message(chat_id=update.message.chat_id,
+                                 text=f"Hi {user.first_name}, to use me you have to be a member of the updates channel in order to stay updated with the latest developments.\nPlease click below button to join and /start the bot again.", reply_markup=help_reply_markup)
+        return
+    else:
+        context.bot.send_message(chat_id=update.message.chat_id,
+                                 text=f"Hi {user.first_name}!\nI'm Instagram Media Downloader Bot. I can help you to download Stories and IGTV Videos from any public instagram account.\nPlease read the /help before using me.", parse_mode=telegram.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton('Support Channel', url='https://t.me/Mai_bOTs'),
@@ -81,6 +87,7 @@ async def start(bot, update):
         ),
         reply_to_message_id=update.message_id
     )
+
 
 @pyrogram.Client.on_message(pyrogram.filters.command(["upgrade"]))
 async def upgrade(bot, update):
