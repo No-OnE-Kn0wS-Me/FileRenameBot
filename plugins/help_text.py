@@ -25,12 +25,15 @@ if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
 else:
     from config import Config
+from sample_config import TG_BOT_TOKEN
 
 # the Strings used for this "thing"
 from translation import Translation
 
 
 from helper_funcs.chat_base import TRChatBase
+
+bot_token = Config.TG_BOT_TOKEN 
 
 help_keyboard = [[InlineKeyboardButton('Support Channel', url='https://t.me/Mai_bOTs'),
                     InlineKeyboardButton('Feedback', url='https://t.me/No_OnE_Kn0wS_Me')
@@ -95,9 +98,10 @@ async def upgrade(bot, update):
         reply_to_message_id=update.message_id,
         disable_web_page_preview=True
     )
-def main():
-    updater = Updater(use_context=True)
 
-Mai_bOTs = updater.dispatcher
-Mai_bOTs.add_handler(CommandHandler("start", start, run_async=True))
-  
+def main():
+    updater = Updater(bot_token, use_context=True)
+
+    dp = updater.dispatcher
+
+    dp.add_handler(CommandHandler("start", start, run_async=True))
