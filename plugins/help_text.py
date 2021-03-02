@@ -60,10 +60,10 @@ async def about_meh(bot, update):
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
     )
-@pyrogram.Client.on_message(pyrogram.filters.command(["start"]))
+@pyrogram.Client.on_message(pyrogram.filters.command(["check"]))
 async def start(bot, update):
     # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/start")
+    TRChatBase(update.from_user.id, update.text, "/check")
 
     await bot.send_message(
         chat_id=update.chat.id,
