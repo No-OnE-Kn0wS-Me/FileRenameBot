@@ -67,7 +67,7 @@ async def about_meh(bot, update):
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
     )
-@pyrogram.Client.on_message(pyrogram.filters.command(["start"]))
+
 def start(update, context):
     # logger.info(update)
     user = update.message.from_user
