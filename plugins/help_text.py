@@ -14,6 +14,8 @@ import os
 import sqlite3
 from pyrogram import filters
 from pyrogram import Client
+import telegram 
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, run_async 
 from pyrogram.types import InlineKeyboardButton
 from pyrogram.types import InlineKeyboardMarkup
 
@@ -24,13 +26,23 @@ if bool(os.environ.get("WEBHOOK", False)):
 else:
     from config import Config
 
+
+
 # the Strings used for this "thing"
 from translation import Translation
 
 
-
-
 from helper_funcs.chat_base import TRChatBase
+
+bot_token = Config.TG_BOT_TOKEN 
+
+help_keyboard = [[InlineKeyboardButton('Support Channel', url='https://t.me/Mai_bOTs'),
+                    InlineKeyboardButton('Feedback', url='https://t.me/No_OnE_Kn0wS_Me')
+                ],
+                [
+                    InlineKeyboardButton('Other Bots', url='https://t.me/Mai_bOTs/17'),
+                    InlineKeyboardButton('Source', url='https://github.com/No-OnE-Kn0wS-Me/FileRenameBot')]]
+help_reply_markup = InlineKeyboardMarkup(help_keyboard)
 
 def GetExpiryDate(chat_id):
     expires_at = (str(chat_id), "Source Cloned User", "1970.01.01.12.00.00")
@@ -59,28 +71,22 @@ async def about_meh(bot, update):
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
     )
-@pyrogram.Client.on_message(pyrogram.filters.command(["start"]))
-async def start(bot, update):
-    # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/start")
 
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=Translation.START_TEXT.format(update.from_user.first_name),
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton('Support Channel', url='https://t.me/Mai_bOTs'),
-                    InlineKeyboardButton('Feedback', url='https://t.me/No_OnE_Kn0wS_Me')
-                ],
-                [
-                    InlineKeyboardButton('Other Bots', url='https://t.me/Mai_bOTs/17'),
-                    InlineKeyboardButton('Source', url='https://github.com/No-OnE-Kn0wS-Me/FileRenameBot')
-                ]
-            ]
-        ),
-        reply_to_message_id=update.message_id
-    )
+def start(update, context):
+    # logger.info(update)
+    user = update.message.from_user
+    chat_member = context.bot.get_chat_member(
+        chat_id='-1001397348422', user_id=update.message.chat_id)
+    status = chat_member["status"]
+    if(status == 'left'):
+        context.bot.send_message(chat_id=update.message.chat_id,
+                                 text=f"Hi {user.first_name}, You Must Be A Member Of The Support Channel If You Want To Use Me! .\nPlease click below button to join and /start the bot again.", reply_markup=help_reply_markup)
+        return
+    else:
+        context.bot.send_message(chat_id=update.message.chat_id,
+                                 text=f"Hi {user.first_name}!\n <b>I'm A Simple File Renamer+File To Video Converter Bot With Permanent Thumbnail support!💯</b> \n<b>Bot Maintained By: @MaI_BoTs </b> \n <b> I Can Also Download/Upload Files From Zee5</b> \n<b>Do /help for more Details ...</b> \n", parse_mode=telegram.ParseMode.HTML, reply_markup=help_reply_markup)
+
+
 
 @pyrogram.Client.on_message(pyrogram.filters.command(["upgrade"]))
 async def upgrade(bot, update):
@@ -93,3 +99,13 @@ async def upgrade(bot, update):
         reply_to_message_id=update.message_id,
         disable_web_page_preview=True
     )
+
+def main():
+    updater = Updater(bot_token, use_context=True)
+
+    dp = updater.dispatcher
+
+    dp.add_handler(CommandHandler("start", start, run_async=True))
+    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
+
+    

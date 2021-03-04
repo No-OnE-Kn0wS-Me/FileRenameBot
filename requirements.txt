@@ -9,7 +9,10 @@ ffmpeg
 sqlalchemy
 pyrogram==1.0.7
 requests
+telegram
 psycopg2-binary
 feedparser
 tgcrypto
 youtube-dl
+python-telegram-bot
+
