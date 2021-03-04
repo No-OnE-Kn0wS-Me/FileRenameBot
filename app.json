@@ -36,6 +36,11 @@
       "description": "allow only pre-defined users to use this bot",
       "value": ""
     },
+    "UPDATE_CHANNEL": {
+      "description": "For Force Subscribe. Paste your Update channel USERNAME (without @)..",
+      "value": "",
+      "required": false
+    },
     "BANNED_USERS": {
       "description": "Banned Unwanted members..",
       "value": "",
