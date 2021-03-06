@@ -59,28 +59,116 @@ async def about_meh(bot, update):
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
     )
-@pyrogram.Client.on_message(pyrogram.filters.command(["start"]))
-async def start(bot, update):
-    # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/start")
+@Bot.on_message(filters.command("start") & filters.private)
+async def start(bot, cmd):
+	if not await db.is_user_exist(cmd.from_user.id):
+		await db.add_user(cmd.from_user.id)
+		await bot.send_message(
+		    Config.LOG_CHANNEL,
+		    f"#NEW_USER: \n\nNew User [{cmd.from_user.first_name}](tg://user?id={cmd.from_user.id}) started @{BOT_USERNAME} !!"
+		)
+	usr_cmd = cmd.text.split("_")[-1]
+	if usr_cmd == "/start":
+		if Config.UPDATES_CHANNEL:
+			invite_link = await bot.export_chat_invite_link(Config.UPDATES_CHANNEL)
+			try:
+				user = await bot.get_chat_member(Config.UPDATES_CHANNEL, cmd.from_user.id)
+				if user.status == "kicked":
+					await bot.send_message(
+						chat_id=cmd.from_user.id,
+						text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
+						parse_mode="markdown",
+						disable_web_page_preview=True
+					)
+					return
+			except UserNotParticipant:
+				await bot.send_message(
+					chat_id=cmd.from_user.id,
+					text="**Please Join My Updates Channel to use this Bot!**\n\nDue to Overload, Only Channel Subscribers can use the Bot!",
+					reply_markup=InlineKeyboardMarkup(
+						[
+							[
+								InlineKeyboardButton("🤖 Join Updates Channel", url=invite_link)
+							],
+							[
+								InlineKeyboardButton("🔄 Refresh 🔄", callback_data="refreshmeh")
+							]
+						]
+					),
+					parse_mode="markdown"
+				)
+				return
+			except Exception:
+				await bot.send_message(
+					chat_id=cmd.from_user.id,
+					text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).",
+					parse_mode="markdown",
+					disable_web_page_preview=True
+				)
+				return
+		await cmd.reply_text(
+			HOME_TEXT.format(cmd.from_user.first_name, cmd.from_user.id),
+			parse_mode="Markdown",
+			disable_web_page_preview=True,
+			reply_markup=InlineKeyboardMarkup(
+				[
+					[
+						InlineKeyboardButton("Support Group", url="https://t.me/linux_repo"),
+						InlineKeyboardButton("Bots Channel", url="https://t.me/Discovery_Updates")
+					],
+					[
+						InlineKeyboardButton("About Bot", callback_data="aboutbot"),
+						InlineKeyboardButton("About Dev", callback_data="aboutdevs")
+					]
+				]
+			)
+		)
+	else:
+		if Config.UPDATES_CHANNEL:
+			invite_link = await bot.export_chat_invite_link(Config.UPDATES_CHANNEL)
+			try:
+				user = await bot.get_chat_member(Config.UPDATES_CHANNEL, cmd.from_user.id)
+				if user.status == "kicked":
+					await bot.send_message(
+						chat_id=cmd.from_user.id,
+						text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
+						parse_mode="markdown",
+						disable_web_page_preview=True
+					)
+					return
+			except UserNotParticipant:
+				file_id = int(usr_cmd)
+				await bot.send_message(
+					chat_id=cmd.from_user.id,
+					text="**Please Join My Updates Channel to use this Bot!**\n\nDue to Overload, Only Channel Subscribers can use the Bot!",
+					reply_markup=InlineKeyboardMarkup(
+						[
+							[
+								InlineKeyboardButton("🤖 Join Updates Channel", url=invite_link)
+							],
+							[
+								InlineKeyboardButton("🔄 Refresh / Try Again", url=f"https://telegram.dog/{BOT_USERNAME}?start=AbirHasan2005_{file_id}")
+							]
+						]
+					),
+					parse_mode="markdown"
+				)
+				return
+			except Exception:
+				await bot.send_message(
+					chat_id=cmd.from_user.id,
+					text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).",
+					parse_mode="markdown",
+					disable_web_page_preview=True
+				)
+				return
+		try:
+			file_id = int(usr_cmd)
+			send_stored_file = await bot.copy_message(chat_id=cmd.from_user.id, from_chat_id=DB_CHANNEL, message_id=file_id)
+			await send_stored_file.reply_text(f"**Here is Sharable Link of this file:** https://telegram.dog/{BOT_USERNAME}?start=AbirHasan2005_{file_id}\n\n__To Retrive the Stored File, just open the link!__", disable_web_page_preview=True, quote=True)
+		except Exception as err:
+			await cmd.reply_text(f"Something went wrong!\n\n**Error:** `{err}`")
 
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=Translation.START_TEXT.format(update.from_user.first_name),
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton('Support Channel', url='https://t.me/Mai_bOTs'),
-                    InlineKeyboardButton('Feedback', url='https://t.me/No_OnE_Kn0wS_Me')
-                ],
-                [
-                    InlineKeyboardButton('Other Bots', url='https://t.me/Mai_bOTs/17'),
-                    InlineKeyboardButton('Source', url='https://github.com/No-OnE-Kn0wS-Me/FileRenameBot')
-                ]
-            ]
-        ),
-        reply_to_message_id=update.message_id
-    )
 
 @pyrogram.Client.on_message(pyrogram.filters.command(["upgrade"]))
 async def upgrade(bot, update):
