@@ -24,7 +24,7 @@ from pyrogram import Client
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from pyrogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
-from pyrogram.errors import UserNotParticipant, UserBannedInChannel, USER_ALREADY_PARTICIPANT 
+from pyrogram.errors import UserNotParticipant, UserBannedInChannel 
 from helper_funcs.chat_base import TRChatBase
 
 
@@ -50,7 +50,7 @@ async def text(bot, update):
               ])
             )
             return
-        except USER_ALREADY_PARTICIPANT:
+        else
             await update.reply_text(Translation.START_TEXT.format(update.from_user.first_name),
         reply_markup=InlineKeyboardMarkup(
             [
