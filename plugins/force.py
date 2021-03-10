@@ -50,7 +50,7 @@ async def text(bot, update):
               ])
             )
             return
-        else
+        else:
             await update.reply_text(Translation.START_TEXT.format(update.from_user.first_name),
         reply_markup=InlineKeyboardMarkup(
             [
