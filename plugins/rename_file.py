@@ -17,6 +17,7 @@ if bool(os.environ.get("WEBHOOK", False)):
 else:
     from config import Config
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel 
+from pyrogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
 
 # the Strings used for this "thing"
 from translation import Translation
