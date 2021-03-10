@@ -28,7 +28,7 @@ from pyrogram.errors import UserNotParticipant, UserBannedInChannel
 from helper_funcs.chat_base import TRChatBase
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command(["rename"]))
+@pyrogram.Client.on_message(pyrogram.filters.command(["start"]))
 async def text(bot, update):
     if update.from_user.id in Config.BANNED_USERS:
         await update.reply_text("You are B A N N E D 🤣🤣🤣🤣")
