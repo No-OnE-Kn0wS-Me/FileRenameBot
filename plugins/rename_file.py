@@ -16,8 +16,6 @@ if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
 else:
     from config import Config
-from pyrogram.errors import UserNotParticipant, UserBannedInChannel 
-from pyrogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
 
 # the Strings used for this "thing"
 from translation import Translation
@@ -28,6 +26,9 @@ from pyrogram import Client, filters
 
 from helper_funcs.chat_base import TRChatBase
 from helper_funcs.display_progress import progress_for_pyrogram
+
+from pyrogram.errors import UserNotParticipant, UserBannedInChannel 
+from pyrogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
 
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
@@ -51,22 +52,7 @@ async def rename_doc(bot, update):
                     num=len(file_name)
                 )
             )
-    update_channel = Config.UPDATE_CHANNEL
-    if update_channel:
-        try:
-            user = await bot.get_chat_member(update_channel, update.chat.id)
-            if user.status == "kicked":
-               await update.reply_text(" Sorry, You are **B A N N E D**")
-               return
-        except UserNotParticipant:
-            #await update.reply_text(f"Join @{update_channel} To Use Me")
-            await update.reply_text(
-                text="**Please Join My Update Channel Before Using Me..**",
-                reply_markup=InlineKeyboardMarkup([
-                    [ InlineKeyboardButton(text="Join My Updates Channel", url=f"https://t.me/{update_channel}")]
-              ])
-            )
-            return 
+            return
         description = Translation.CUSTOM_CAPTION_UL_FILE
         download_location = Config.DOWNLOAD_LOCATION + "/"
         a = await bot.send_message(
@@ -154,7 +140,23 @@ async def rename_doc(bot, update):
                 chat_id=update.chat.id,
                 message_id=a.message_id,
                 disable_web_page_preview=True
+           ) 
+    update_channel = Config.UPDATE_CHANNEL
+    if update_channel:
+        try:
+            user = await bot.get_chat_member(update_channel, update.chat.id)
+            if user.status == "kicked":
+               await update.reply_text(" Sorry, You are **B A N N E D**")
+               return
+        except UserNotParticipant:
+            #await update.reply_text(f"Join @{update_channel} To Use Me")
+            await update.reply_text(
+                text="**Please Join My Update Channel Before Using Me..**",
+                reply_markup=InlineKeyboardMarkup([
+                    [ InlineKeyboardButton(text="Join My Updates Channel", url=f"https://t.me/{update_channel}")]
+              ])
             )
+            return  
     else:
         await bot.send_message(
             chat_id=update.chat.id,
