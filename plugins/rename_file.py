@@ -42,7 +42,16 @@ async def rename_doc(bot, update):
         await update.reply_text("You are B A N N E D")
         return
     TRChatBase(update.from_user.id, update.text, "rename")
-    update_channel = Config.UPDATE_CHANNEL
+    if (" " in update.text) and (update.reply_to_message is not None):
+        cmd, file_name = update.text.split(" ", 1)
+        if len(file_name) > 64:
+            await update.reply_text(
+                Translation.IFLONG_FILE_NAME.format(
+                    alimit="64",
+                    num=len(file_name)
+                )
+            )
+            update_channel = Config.UPDATE_CHANNEL
     if update_channel:
         try:
             user = await bot.get_chat_member(update_channel, update.chat.id)
@@ -57,17 +66,7 @@ async def rename_doc(bot, update):
                     [ InlineKeyboardButton(text="Join My Updates Channel", url=f"https://t.me/{update_channel}")]
               ])
             )
-            return
-    if (" " in update.text) and (update.reply_to_message is not None):
-        cmd, file_name = update.text.split(" ", 1)
-        if len(file_name) > 64:
-            await update.reply_text(
-                Translation.IFLONG_FILE_NAME.format(
-                    alimit="64",
-                    num=len(file_name)
-                )
-            )
-            return
+            return 
         description = Translation.CUSTOM_CAPTION_UL_FILE
         download_location = Config.DOWNLOAD_LOCATION + "/"
         a = await bot.send_message(
