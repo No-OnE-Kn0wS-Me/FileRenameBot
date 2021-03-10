@@ -20,6 +20,11 @@
       "description": "Your bot token, as a string.",
       "value": ""
     },
+    "UPDATE_CHANNEL": {
+      "description": "For Force Subscribe. Paste your Update channel USERNAME (without @)..",
+      "value": "",
+      "required": false
+    },
     "CHAT_BASE_TOKEN": {
       "description": "Your chat base token, as a string.",
       "value": ""
