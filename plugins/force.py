@@ -25,6 +25,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from pyrogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel
+from helper_funcs.chat_base import TRChatBase
 
 
 @pyrogram.Client.on_message(pyrogram.filters.text)
