@@ -26,7 +26,7 @@ from pyrogram.errors import UserNotParticipant, UserBannedInChannel
 
 
 @pyrogram.Client.on_message(pyrogram.filters.text)
-async def echo(bot, update):
+async def text(bot, update):
     if update.from_user.id in Config.BANNED_USERS:
         await update.reply_text("You are B A N N E D 🤣🤣🤣🤣")
         return
