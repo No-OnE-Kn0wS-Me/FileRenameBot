@@ -19,6 +19,8 @@ else:
 from translation import Translation
 
 import pyrogram
+from pyrogram import filters
+from pyrogram import Client
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from pyrogram import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
