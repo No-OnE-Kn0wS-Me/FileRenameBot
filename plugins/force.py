@@ -23,7 +23,7 @@ from pyrogram import filters
 from pyrogram import Client
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
-from pyrogram import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel
 
 
