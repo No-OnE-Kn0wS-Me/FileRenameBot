@@ -25,6 +25,10 @@ from helper_funcs.chat_base import TRChatBase
 from helper_funcs.display_progress import progress_for_pyrogram
 from helper_funcs.help_Nekmo_ffmpeg import take_screen_shot
 
+from pyrogram.types import InlineKeyboardButton
+from pyrogram.types import InlineKeyboardMarkup
+from pyrogram.errors import UserNotParticipant, UserBannedInChannel 
+
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 # https://stackoverflow.com/a/37631799/4723940
@@ -140,9 +144,25 @@ async def convert_to_video(bot, update):
                 message_id=a.message_id,
                 disable_web_page_preview=True
             )
-    else:
-        await bot.send_message(
-            chat_id=update.chat.id,
-            text=Translation.REPLY_TO_DOC_FOR_C2V,
-            reply_to_message_id=update.message_id
-        )
+    update_channel = Config.UPDATE_CHANNEL
+    if update_channel:
+        try:
+            user = await bot.get_chat_member(update_channel, update.chat.id)
+            if user.status == "kicked":
+               await update.reply_text(" Sorry, You are **B A N N E D**")
+               return
+        except UserNotParticipant:
+            #await update.reply_text(f"Join @{update_channel} To Use Me")
+            await update.reply_text(
+                text="**Please Join My Update Channel Before Using Me..**",
+                reply_markup=InlineKeyboardMarkup([
+                    [ InlineKeyboardButton(text="Join My Updates Channel", url=f"https://t.me/{update_channel}")]
+              ])
+            )
+            return  
+        else:
+            await bot.send_message(
+                chat_id=update.chat.id,
+                text=Translation.REPLY_TO_DOC_FOR_RENAME_FILE,
+                reply_to_message_id=update.message_id
+            )
