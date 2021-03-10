@@ -16,6 +16,7 @@ from pyrogram import filters
 from pyrogram import Client
 from pyrogram.types import InlineKeyboardButton
 from pyrogram.types import InlineKeyboardMarkup
+from pyrogram.errors import UserNotParticipant, UserBannedInChannel 
 
 
 # the secret configuration specific things
@@ -42,7 +43,24 @@ def GetExpiryDate(chat_id):
 async def help_user(bot, update):
     # logger.info(update)
     TRChatBase(update.from_user.id, update.text, "/help")
-    await bot.send_message(
+    update_channel = Config.UPDATE_CHANNEL
+    if update_channel:
+        try:
+            user = await bot.get_chat_member(update_channel, update.chat.id)
+            if user.status == "kicked":
+               await update.reply_text(" Sorry, You are **B A N N E D**")
+               return
+        except UserNotParticipant:
+            #await update.reply_text(f"Join @{update_channel} To Use Me")
+            await update.reply_text(
+                text="**Please Join My Update Channel Before Using Me..**",
+                reply_markup=InlineKeyboardMarkup([
+                    [ InlineKeyboardButton(text="Join My Updates Channel", url=f"https://t.me/{update_channel}")]
+              ])
+            )
+            return
+        else:
+            await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.HELP_USER,
         reply_to_message_id=update.message_id
@@ -52,35 +70,31 @@ async def help_user(bot, update):
 async def about_meh(bot, update):
     # logger.info(update)
     TRChatBase(update.from_user.id, update.text, "/about")
-    await bot.send_message(
+    update_channel = Config.UPDATE_CHANNEL
+    if update_channel:
+        try:
+            user = await bot.get_chat_member(update_channel, update.chat.id)
+            if user.status == "kicked":
+               await update.reply_text(" Sorry, You are **B A N N E D**")
+               return
+        except UserNotParticipant:
+            #await update.reply_text(f"Join @{update_channel} To Use Me")
+            await update.reply_text(
+                text="**Please Join My Update Channel Before Using Me..**",
+                reply_markup=InlineKeyboardMarkup([
+                    [ InlineKeyboardButton(text="Join My Updates Channel", url=f"https://t.me/{update_channel}")]
+              ])
+            )
+            return
+        else:
+            await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.ABOUT_ME,
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
     )
-@pyrogram.Client.on_message(pyrogram.filters.command(["start"]))
-async def start(bot, update):
-    # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/start")
 
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=Translation.START_TEXT.format(update.from_user.first_name),
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton('Support Channel', url='https://t.me/Mai_bOTs'),
-                    InlineKeyboardButton('Feedback', url='https://t.me/No_OnE_Kn0wS_Me')
-                ],
-                [
-                    InlineKeyboardButton('Other Bots', url='https://t.me/Mai_bOTs/17'),
-                    InlineKeyboardButton('Source', url='https://github.com/No-OnE-Kn0wS-Me/FileRenameBot')
-                ]
-            ]
-        ),
-        reply_to_message_id=update.message_id
-    )
 
 @pyrogram.Client.on_message(pyrogram.filters.command(["upgrade"]))
 async def upgrade(bot, update):
