@@ -6,7 +6,7 @@ numpy
 Pillow
 ffmpeg-python
 ffmpeg
-sqlalchemy
+sqlalchemy==1.3.23
 pyrogram==1.0.7
 requests
 psycopg2-binary
