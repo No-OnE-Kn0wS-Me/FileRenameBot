@@ -24,7 +24,7 @@ import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from pyrogram import Client, filters 
 
-from helper_funcs.chat_base import TRChatBase
+#from helper_funcs.chat_base import TRChatBase
 from helper_funcs.display_progress import progress_for_pyrogram
 
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel 
@@ -42,7 +42,7 @@ async def rename_doc(bot, update):
     if update.from_user.id in Config.BANNED_USERS:
         await update.reply_text("You are B A N N E D")
         return
-    TRChatBase(update.from_user.id, update.text, "rename")
+    #TRChatBase(update.from_user.id, update.text, "rename")
     if (" " in update.text) and (update.reply_to_message is not None):
         cmd, file_name = update.text.split(" ", 1)
         if len(file_name) > 64:
