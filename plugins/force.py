@@ -25,7 +25,6 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from pyrogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel 
-from helper_funcs.chat_base import TRChatBase
 
 
 @pyrogram.Client.on_message(pyrogram.filters.command(["start"]))
@@ -33,7 +32,6 @@ async def text(bot, update):
     if update.from_user.id in Config.BANNED_USERS:
         await update.reply_text("You are Banned")
         return
-    TRChatBase(update.from_user.id, update.text, "/echo")
     update_channel = Config.UPDATE_CHANNEL
     if update_channel:
         try:
