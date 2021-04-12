@@ -31,7 +31,7 @@ from translation import Translation
 
 
 
-from helper_funcs.chat_base import TRChatBase
+#from helper_funcs.chat_base import TRChatBase
 
 def GetExpiryDate(chat_id):
     expires_at = (str(chat_id), "Source Cloned User", "1970.01.01.12.00.00")
@@ -42,7 +42,7 @@ def GetExpiryDate(chat_id):
 @pyrogram.Client.on_message(pyrogram.filters.command(["help"]))
 async def help_user(bot, update):
     # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/help")
+    #TRChatBase(update.from_user.id, update.text, "/help")
     update_channel = Config.UPDATE_CHANNEL
     if update_channel:
         try:
@@ -69,7 +69,7 @@ async def help_user(bot, update):
 @pyrogram.Client.on_message(pyrogram.filters.command(["about"]))
 async def about_meh(bot, update):
     # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/about")
+    #TRChatBase(update.from_user.id, update.text, "/about")
     update_channel = Config.UPDATE_CHANNEL
     if update_channel:
         try:
@@ -99,7 +99,7 @@ async def about_meh(bot, update):
 @pyrogram.Client.on_message(pyrogram.filters.command(["upgrade"]))
 async def upgrade(bot, update):
     # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/upgrade")
+    #TRChatBase(update.from_user.id, update.text, "/upgrade")
     await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.UPGRADE_TEXT,
