@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# (c) Shrimadhav U K
 
 # the logging things
 import logging
@@ -9,6 +6,7 @@ logging.basicConfig(level=logging.DEBUG,
 logger = logging.getLogger(__name__)
 
 import os
+import random
 import time
 
 # the secret configuration specific things
@@ -22,27 +20,31 @@ from translation import Translation
 
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
-from pyrogram import Client, filters 
 
 #from helper_funcs.chat_base import TRChatBase
 from helper_funcs.display_progress import progress_for_pyrogram
+from helper_funcs.help_Nekmo_ffmpeg import take_screen_shot
 
+from pyrogram.types import InlineKeyboardButton
+from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel 
-from pyrogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
 
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 # https://stackoverflow.com/a/37631799/4723940
 from PIL import Image
-from database.database import *
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command(["rename"]))
-async def rename_doc(bot, update):
+@pyrogram.Client.on_message(pyrogram.filters.command(["renamevideo"]))
+async def rename_video, update):
     if update.from_user.id in Config.BANNED_USERS:
-        await update.reply_text("You are B A N N E D")
+        await bot.send_message(
+            chat_id=update.chat.id,
+            text=Translation.BANNED_USER_TEXT,
+            reply_to_message_id=update.message_id
+        )
         return
-    #TRChatBase(update.from_user.id, update.text, "rename")
+    #TRChatBase(update.from_user.id, update.text, "c2v")
     if (" " in update.text) and (update.reply_to_message is not None):
         cmd, file_name = update.text.split(" ", 1)
         if len(file_name) > 64:
@@ -83,56 +85,76 @@ async def rename_doc(bot, update):
             new_file_name = download_location + file_name
             os.rename(the_real_download_location, new_file_name)
             await bot.edit_message_text(
-                text=Translation.UPLOAD_START,
+                text=Translation.SAVED_RECVD_DOC_FILE,
                 chat_id=update.chat.id,
                 message_id=a.message_id
-                )
+            )
+            # don't care about the extension
+           # await bot.edit_message_text(
+              #  text=Translation.UPLOAD_START,
+             #   chat_id=update.chat.id,
+            #    message_id=a.message_id
+          #  )
             logger.info(the_real_download_location)
+            # get the correct width, height, and duration for videos greater than 10MB
+            # ref: message from @BotSupport
+            width = 0
+            height = 0
+            duration = 0
+            metadata = extractMetadata(createParser(the_real_download_location))
+            if metadata.has("duration"):
+                duration = metadata.get('duration').seconds
             thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
             if not os.path.exists(thumb_image_path):
-                mes = await thumb(update.from_user.id)
-                if mes != None:
-                    m = await bot.get_messages(update.chat.id, mes.msg_id)
-                    await m.download(file_name=thumb_image_path)
-                    thumb_image_path = thumb_image_path
-                else:
-                    thumb_image_path = None
-            else:
-                width = 0
-                height = 0
-                metadata = extractMetadata(createParser(thumb_image_path))
-                if metadata.has("width"):
-                    width = metadata.get("width")
-                if metadata.has("height"):
-                    height = metadata.get("height")
-                # resize image
-                # ref: https://t.me/PyrogramChat/44663
-                # https://stackoverflow.com/a/21669827/4723940
-                Image.open(thumb_image_path).convert("RGB").save(thumb_image_path)
-                img = Image.open(thumb_image_path)
-                # https://stackoverflow.com/a/37631799/4723940
-                # img.thumbnail((90, 90))
-                img.resize((320, height))
-                img.save(thumb_image_path, "JPEG")
-                # https://pillow.readthedocs.io/en/3.1.x/reference/Image.html#create-thumbnails
+                thumb_image_path = await take_screen_shot(
+                    the_real_download_location,
+                    os.path.dirname(the_real_download_location),
+                    random.randint(
+                        0,
+                        duration - 1
+                    )
+                )
+            logger.info(thumb_image_path)
+            # 'thumb_image_path' will be available now
+            metadata = extractMetadata(createParser(thumb_image_path))
+            if metadata.has("width"):
+                width = metadata.get("width")
+            if metadata.has("height"):
+                height = metadata.get("height")
+            # get the correct width, height, and duration for videos greater than 10MB
+            # resize image
+            # ref: https://t.me/PyrogramChat/44663
+            # https://stackoverflow.com/a/21669827/4723940
+            Image.open(thumb_image_path).convert("RGB").save(thumb_image_path)
+            img = Image.open(thumb_image_path)
+            # https://stackoverflow.com/a/37631799/4723940
+            # img.thumbnail((90, 90))
+            img.resize((90, height))
+            img.save(thumb_image_path, "JPEG")
+            # https://pillow.readthedocs.io/en/3.1.x/reference/Image.html#create-thumbnails
+            # try to upload file
             c_time = time.time()
-            await bot.send_document(
+            await bot.send_video(
                 chat_id=update.chat.id,
-                document=new_file_name,
-                thumb=thumb_image_path,
+                video=the_real_download_location,
                 caption=f"<b>{file_name}</b>",
+                duration=duration,
+                width=width,
+                height=height,
+                supports_streaming=True,
                 # reply_markup=reply_markup,
+                thumb=thumb_image_path,
                 reply_to_message_id=update.reply_to_message.message_id,
                 progress=progress_for_pyrogram,
                 progress_args=(
                     Translation.UPLOAD_START,
-                    a, 
+                    a,
                     c_time
                 )
             )
             try:
-                os.remove(new_file_name)
-                os.remove(thumb_image_path)
+                os.remove(the_real_download_location)
+              #  os.remove(thumb_image_path)
             except:
                 pass
             await bot.edit_message_text(
@@ -140,7 +162,7 @@ async def rename_doc(bot, update):
                 chat_id=update.chat.id,
                 message_id=a.message_id,
                 disable_web_page_preview=True
-           ) 
+            )
     update_channel = Config.UPDATE_CHANNEL
     if update_channel:
         try:
@@ -163,4 +185,3 @@ async def rename_doc(bot, update):
                 text=Translation.REPLY_TO_DOC_FOR_RENAME_FILE,
                 reply_to_message_id=update.message_id
             )
- 
