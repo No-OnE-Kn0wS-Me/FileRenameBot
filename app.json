@@ -8,9 +8,9 @@
     "source",
     "Rename"
   ],
-  "success_url": "https://t.me/Mai_bOTs",
-  "website": "https://github.com/No-OnE-Kn0wS-Me",
-  "repository": "https://github.com/No-OnE-Kn0wS-Me/Renamebot",
+  "success_url": "https://github.com/spechide/AnyDLbot",
+  "website": "https://githib.com/prgofficial",
+  "repository": "https://github.com/prgofficial/RenameBot-PermTB",
   "env": {
     "WEBHOOK": {
       "description": "Setting this to ANYTHING will enable webhooks when in env mode",
@@ -19,11 +19,6 @@
     "TG_BOT_TOKEN": {
       "description": "Your bot token, as a string.",
       "value": ""
-    },
-    "UPDATE_CHANNEL": {
-      "description": "For Force Subscribe. Paste your Update channel USERNAME (without @)..",
-      "value": "",
-      "required": false
     },
     "APP_ID": {
       "description": "Get this value from https://my.telegram.org",
@@ -40,11 +35,6 @@
     "BANNED_USERS": {
       "description": "Banned Unwanted members..",
       "value": "",
-      "required": false
-    },
-    "CHUNK_SIZE": {
-      "description": "chunk size that should be used with requests",
-      "value": "128",
       "required": false
     }
   },
