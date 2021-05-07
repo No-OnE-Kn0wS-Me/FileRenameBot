@@ -37,13 +37,22 @@ from PIL import Image
 
 @pyrogram.Client.on_message(pyrogram.filters.command(["c2v"]))
 async def convert_to_video(bot, update):
-    if update.from_user.id in Config.BANNED_USERS:
-        await bot.send_message(
-            chat_id=update.chat.id,
-            text=Translation.BANNED_USER_TEXT,
-            reply_to_message_id=update.message_id
-        )
-        return
+    update_channel = Config.UPDATE_CHANNEL
+    if update_channel:
+        try:
+            user = await bot.get_chat_member(update_channel, update.chat.id)
+            if user.status == "kicked":
+               await update.reply_text(" Sorry, You are **B A N N E D**")
+               return
+        except UserNotParticipant:
+            #await update.reply_text(f"Join @{update_channel} To Use Me")
+            await update.reply_text(
+                text="**Please Join My Update Channel Before Using Me..**",
+                reply_markup=InlineKeyboardMarkup([
+                    [ InlineKeyboardButton(text="Join My Updates Channel", url=f"https://t.me/{update_channel}")]
+              ])
+            )
+            return  
     #TRChatBase(update.from_user.id, update.text, "c2v")
     if update.reply_to_message is not None:
         description = Translation.CUSTOM_CAPTION_UL_FILE
@@ -144,22 +153,7 @@ async def convert_to_video(bot, update):
                 message_id=a.message_id,
                 disable_web_page_preview=True
             )
-    update_channel = Config.UPDATE_CHANNEL
-    if update_channel:
-        try:
-            user = await bot.get_chat_member(update_channel, update.chat.id)
-            if user.status == "kicked":
-               await update.reply_text(" Sorry, You are **B A N N E D**")
-               return
-        except UserNotParticipant:
-            #await update.reply_text(f"Join @{update_channel} To Use Me")
-            await update.reply_text(
-                text="**Please Join My Update Channel Before Using Me..**",
-                reply_markup=InlineKeyboardMarkup([
-                    [ InlineKeyboardButton(text="Join My Updates Channel", url=f"https://t.me/{update_channel}")]
-              ])
-            )
-            return  
+
         else:
             await bot.send_message(
                 chat_id=update.chat.id,
