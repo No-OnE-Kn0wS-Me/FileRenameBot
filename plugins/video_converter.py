@@ -153,10 +153,9 @@ async def convert_to_video(bot, update):
                 message_id=a.message_id,
                 disable_web_page_preview=True
             )
-
-        else:
-            await bot.send_message(
-                chat_id=update.chat.id,
-                text=Translation.REPLY_TO_FILE_FOR_CONVERT,
-                reply_to_message_id=update.message_id
-            )
+    else:
+        await bot.send_message(
+            chat_id=update.chat.id,
+            text=Translation.REPLY_TO_FILE_FOR_CONVERT,
+            reply_to_message_id=update.message_id
+        )
