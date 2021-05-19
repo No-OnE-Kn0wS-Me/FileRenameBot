@@ -14,7 +14,7 @@ else:
 
 from translation import Translation
 from pyrogram import filters
-from pyrogram import Client as Mai_bOTs
+from pyrogram import Client as MaI_bOTs
 
 import database.database as sql
 from PIL import Image
