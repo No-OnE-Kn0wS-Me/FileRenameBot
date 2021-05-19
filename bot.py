@@ -3,7 +3,6 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
-from pyrogram import Client as Mai_bOTs
 import os
 
 if bool(os.environ.get("WEBHOOK", False)):
@@ -21,7 +20,7 @@ if __name__ == "__main__" :
     plugins = dict(
         root="plugins"
     )
-    app = Mai_bOTs(
+    app = pyrogram.Client(
         "Zee5",
         bot_token=Config.TG_BOT_TOKEN,
         api_id=Config.APP_ID,
