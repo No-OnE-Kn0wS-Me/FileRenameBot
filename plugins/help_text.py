@@ -39,7 +39,7 @@ def GetExpiryDate(chat_id):
     return expires_at
 
 
-@pyrogram.Mai_bOTs.on_message(pyrogram.filters.command(["help"]))
+@Mai_bOTs.on_message(pyrogram.filters.command(["help"]))
 async def help_user(bot, update):
     # logger.info(update)
     #TRChatBase(update.from_user.id, update.text, "/help")
@@ -66,7 +66,7 @@ async def help_user(bot, update):
         reply_to_message_id=update.message_id
     )
 
-@pyrogram.Mai_bOTs.on_message(pyrogram.filters.command(["about"]))
+@Mai_bOTs.on_message(pyrogram.filters.command(["about"]))
 async def about_meh(bot, update):
     # logger.info(update)
     #TRChatBase(update.from_user.id, update.text, "/about")
@@ -96,7 +96,7 @@ async def about_meh(bot, update):
     )
 
 
-@pyrogram.Mai_bOTs.on_message(pyrogram.filters.command(["upgrade"]))
+@Mai_bOTs.on_message(pyrogram.filters.command(["upgrade"]))
 async def upgrade(bot, update):
     # logger.info(update)
     #TRChatBase(update.from_user.id, update.text, "/upgrade")
