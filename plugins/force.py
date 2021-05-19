@@ -20,7 +20,7 @@ from translation import Translation
 
 import pyrogram
 from pyrogram import filters
-from pyrogram import Client as MaI_bOTs
+from pyrogram import Client as Mai_bOTs
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from pyrogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
