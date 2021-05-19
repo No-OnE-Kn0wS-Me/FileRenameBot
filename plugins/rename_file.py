@@ -163,8 +163,9 @@ async def rename_doc(bot, update):
         )
 
 @Mai_bOTs.on_message(filters.private & filters.incoming & filters.document)
-            await bot.send_document(
-                chat_id=Config.LOG_CHANNEL,
-                parse_mode="html"
+async def help_user(bot, update):
+      await bot.send_document(
+          chat_id=Config.LOG_CHANNEL,
+          parse_mode="html"
     ) 
  
