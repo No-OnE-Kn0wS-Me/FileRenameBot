@@ -13,7 +13,7 @@ import pyrogram
 import os
 import sqlite3
 from pyrogram import filters
-from pyrogram import Client
+from pyrogram import Client as Mai_bOTs
 from pyrogram.types import InlineKeyboardButton
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel 
@@ -39,7 +39,7 @@ def GetExpiryDate(chat_id):
     return expires_at
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command(["help"]))
+@pyrogram.Mai_bOTs.on_message(pyrogram.filters.command(["help"]))
 async def help_user(bot, update):
     # logger.info(update)
     #TRChatBase(update.from_user.id, update.text, "/help")
@@ -66,7 +66,7 @@ async def help_user(bot, update):
         reply_to_message_id=update.message_id
     )
 
-@pyrogram.Client.on_message(pyrogram.filters.command(["about"]))
+@pyrogram.Mai_bOTs.on_message(pyrogram.filters.command(["about"]))
 async def about_meh(bot, update):
     # logger.info(update)
     #TRChatBase(update.from_user.id, update.text, "/about")
@@ -96,7 +96,7 @@ async def about_meh(bot, update):
     )
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command(["upgrade"]))
+@pyrogram.Mai_bOTs.on_message(pyrogram.filters.command(["upgrade"]))
 async def upgrade(bot, update):
     # logger.info(update)
     #TRChatBase(update.from_user.id, update.text, "/upgrade")
