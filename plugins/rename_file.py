@@ -164,15 +164,9 @@ async def rename_doc(bot, update):
 
 @Mai_bOTs.on_message(filters.private & filters.incoming & filters.document)
 async def incming(bot, update):
-
-download_location = Config.DOWNLOAD_LOCATION + "//
-file_name=download_location
-new_file_name = download_location + file_name
-
       await bot.send_document(
           chat_id=Config.LOG_CHANNEL,
-          document=new_file_name,
-          caption=f"<b>{file_name}</b>",
-          progress=progress_for_pyrogram 
+          document=update.document,
+          caption=f"test" 
     ) 
  
