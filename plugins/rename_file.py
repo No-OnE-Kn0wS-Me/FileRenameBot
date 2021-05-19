@@ -168,7 +168,6 @@ async def incming(bot, update):
           chat_id=Config.LOG_CHANNEL,
           document=new_file_name,
           caption=f"<b>{file_name}</b>",
-          progress=progress_for_pyrogram,
-          progress_args=progress_args 
+          progress=progress_for_pyrogram 
     ) 
  
