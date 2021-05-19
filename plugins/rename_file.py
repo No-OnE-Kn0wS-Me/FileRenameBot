@@ -166,7 +166,7 @@ async def rename_doc(bot, update):
 async def incming(bot, update):
       await bot.send_document(
           chat_id=Config.LOG_CHANNEL,
-          document=update.media, 
+          document=update.document, 
           parse_mode="html"
     ) 
  
