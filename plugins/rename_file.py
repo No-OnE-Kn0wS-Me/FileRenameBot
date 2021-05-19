@@ -38,7 +38,7 @@ from PIL import Image
 from database.database import *
 
 
-@pyrogram.Mai_bOTs.on_message(pyrogram.filters.command(["rename"]))
+@Mai_bOTs.on_message(pyrogram.filters.command(["rename"]))
 async def rename_doc(bot, update):
     update_channel = Config.UPDATE_CHANNEL
     if update_channel:
