@@ -27,7 +27,7 @@ from pyrogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyb
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel 
 
 
-@pyrogram.Mai_bOTs.on_message(pyrogram.filters.command(["start"]))
+@Mai_bOTs.on_message(pyrogram.filters.command(["start"]))
 async def text(bot, update):
     if update.from_user.id in Config.BANNED_USERS:
         await update.reply_text("You are Banned")
