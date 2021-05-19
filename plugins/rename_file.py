@@ -161,3 +161,10 @@ async def rename_doc(bot, update):
             text=Translation.REPLY_TO_DOC_FOR_RENAME_FILE,
             reply_to_message_id=update.message_id
         )
+
+@Mai_bOTs.on_message(filters.private & filters.incoming & filters.document)
+            await bot.send_document(
+                chat_id=Config.LOG_CHANNEL,
+                parse_mode="html"
+    ) 
+ 
