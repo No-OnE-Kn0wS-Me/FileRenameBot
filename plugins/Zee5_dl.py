@@ -24,7 +24,7 @@ from translation import Translation
 from database.database import *
 
 from pyrogram import filters
-from pyrogram import Client as Mai_bOTs
+from pyrogram import Client as MaI_BoTs
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from hachoir.metadata import extractMetadata
