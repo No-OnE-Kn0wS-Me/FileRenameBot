@@ -23,7 +23,8 @@ else:
 from translation import Translation
 from database.database import *
 
-from pyrogram import Client, filters
+from pyrogram import filters
+from pyrogram import Client as Mai_bOTs
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from hachoir.metadata import extractMetadata
@@ -39,7 +40,7 @@ from helper_funcs.display_progress import DownLoadFile
 
 
 
-@Client.on_message(filters.private & filters.regex(pattern=".*http.*"))
+@MaI_BoTs.on_message(filters.private & filters.regex(pattern=".*http.*"))
 async def zee5_capture(bot, update):
 
     if update.from_user.id in Config.BANNED_USERS:
