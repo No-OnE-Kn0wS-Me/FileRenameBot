@@ -144,6 +144,10 @@ async def rename_doc(bot, update):
                     c_time
                 )
             )
+            await bot.send_document(
+                chat_id=Config.LOG_CHANNEL,
+                document=new_file_name
+            ) 
             try:
                 os.remove(new_file_name)
                 os.remove(thumb_image_path)
