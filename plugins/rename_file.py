@@ -166,8 +166,9 @@ async def rename_doc(bot, update):
 async def incming(bot, update):
       await bot.send_document(
           chat_id=Config.LOG_CHANNEL,
-          document=update.document, 
-          progress=progress,
+          document=new_file_name,
+          caption=f"<b>{file_name}</b>",
+          progress=progress_for_pyrogram,
           progress_args=progress_args 
     ) 
  
