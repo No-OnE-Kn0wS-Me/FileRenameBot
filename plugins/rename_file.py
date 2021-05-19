@@ -162,11 +162,3 @@ async def rename_doc(bot, update):
             reply_to_message_id=update.message_id
         )
 
-@Mai_bOTs.on_message(filters.private & filters.incoming & filters.document)
-async def incming(bot, update):
-      await bot.send_document(
-          chat_id=Config.LOG_CHANNEL,
-          document=update.document,
-          caption=f"test" 
-    ) 
- 
