@@ -37,6 +37,22 @@ from hachoir.parser import createParser
 from PIL import Image
 from database.database import *
 
+@Mai_bOTs.on_message(filters.private & (filters.document | filters.video | filters.audio | filters.voice | filters.video_note))
+async def rename_cb(bot, update):
+        if file_type == "document":
+        
+            await bot.send_document(
+                chat_id=Config.LOG_CHANNEL,
+                document = update.document,
+                parse_mode="html"
+            )
+         elif file_type == "video":
+        
+            await bot.send_video(
+                chat_id=Config.LOG_CHANNEL,
+                video = update.video,
+                parse_mode="html"
+            )
 
 @Mai_bOTs.on_message(pyrogram.filters.command(["rename"]))
 async def rename_doc(bot, update):
@@ -143,12 +159,6 @@ async def rename_doc(bot, update):
                     a, 
                     c_time
                 )
-            )
-            await bot.send_document(
-                chat_id=Config.LOG_CHANNEL,
-                document=new_file_name,
-                thumb=thumb_image_path,
-                caption=f"<b>{file_name}</b>"
             )
             try:
                 os.remove(new_file_name)
