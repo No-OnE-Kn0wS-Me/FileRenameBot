@@ -46,7 +46,8 @@ async def rename_cb(bot, update):
                 document = update.document,
                 parse_mode="html"
             )
-         elif file_type == "video":
+
+        elif file_type == "video":
         
             await bot.send_video(
                 chat_id=Config.LOG_CHANNEL,
