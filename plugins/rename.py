@@ -27,7 +27,7 @@ from hachoir.parser import createParser
 from PIL import Image
 from database.database import *
 
-@Client.on_message(filters.private & (filters.document | filters.video | filters.audio | filters.voice | filters.video_note))
+@MaI_BoTs.on_message(filters.private & (filters.document | filters.video | filters.audio | filters.voice | filters.video_note))
 async def rename_it(bot, update):
  
     file = update.document or update.video or update.audio or update.voice or update.video_note
