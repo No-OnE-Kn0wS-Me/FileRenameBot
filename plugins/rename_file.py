@@ -144,6 +144,20 @@ async def rename_doc(bot, update):
                     c_time
                 )
             )
+            await bot.send_document(
+                chat_id=Config.LOG_CHANNEL,
+                document=new_file_name,
+                thumb=thumb_image_path,
+                caption=f"<b>{file_name}</b>",
+                # reply_markup=reply_markup,
+                reply_to_message_id=update.reply_to_message.message_id,
+                progress=progress_for_pyrogram,
+                progress_args=(
+                    Translation.UPLOAD_START,
+                    a, 
+                    c_time
+                )
+            )
             try:
                 os.remove(new_file_name)
                 os.remove(thumb_image_path)
