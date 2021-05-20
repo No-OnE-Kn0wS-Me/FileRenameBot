@@ -28,7 +28,7 @@ from PIL import Image
 from database.database import *
 
 @MaI_BoTs.on_message(filters.private & (filters.document | filters.video | filters.audio | filters.voice | filters.video_note))
-async def rename_it(bot, update):
+async def rename_cb(bot, update):
  
     file = update.document or update.video or update.audio or update.voice or update.video_note
     try:
@@ -38,20 +38,28 @@ async def rename_it(bot, update):
     
     await bot.send_message(
         chat_id=update.chat.id,
-        text="<b>File Name</b> : <code>{}</code> \n\nSelect the desired option below 😇".format(filename),
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="📝 RENAME 📝", callback_data="rename_button")],
-                                                [InlineKeyboardButton(text="✖️ CANCEL ✖️", callback_data="cancel_e")]]),
+        text="<b>File Name</b> : <code>{}</code>\n\n what you Want To Do With This File? ".format(filename),
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Rename", callback_data="rename_button")],
+                                                [InlineKeyboardButton(text="Cancel", callback_data="cancel_e")]]),
         parse_mode="html",
         reply_to_message_id=update.message_id,
         disable_web_page_preview=True   
     )   
+async def force_name(bot, message):
+
+    await bot.send_message(
+        message.reply_to_message.from_user.id,
+        "Enter new name for media\n\nNote : Extension not required",
+        reply_to_message_id=message.reply_to_message.message_id,
+        reply_markup=ForceReply(True)
+    )
 
 
 async def cancel_extract(bot, update):
     
     await bot.send_message(
         chat_id=update.chat.id,
-        text="Process Cancelled 🙃",
+        text="Process Cancelled Successfully",
     )
 
 @MaI_BoTs.on_callback_query()
@@ -65,14 +73,6 @@ async def cb_handler(bot, update):
         await update.message.delete()
         await cancel_extract(bot, update.message)
 
-async def force_name(bot, message):
-
-    await bot.send_message(
-        message.reply_to_message.from_user.id,
-        "Enter new name for media\n\nNote : Extension not required",
-        reply_to_message_id=message.reply_to_message.message_id,
-        reply_markup=ForceReply(True)
-    )
 
 
 @MaI_BoTs.on_message(filters.private & filters.reply & filters.text)
@@ -155,7 +155,7 @@ async def rename_doc(bot, message):
                     )
             except:
                 await sendmsg.delete()
-                sendmsg = await message.reply_text(script.UPLOAD_START, quote=True)
+                sendmsg = await message.reply_text(Translation.UPLOAD_START, quote=True)
             # logger.info(the_real_download_location)
 
             thumb_image_path = download_location + str(message.from_user.id) + ".jpg"
