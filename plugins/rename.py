@@ -127,9 +127,9 @@ async def rename_doc(bot, message):
         the_real_download_location = await bot.download_media(
             message=media,
             file_name=download_location,
-            progress=progress_for_pyrogram,
+            progress=display_progress,
             progress_args=(
-                script.DOWNLOAD_START,
+                Translation.DOWNLOAD_START,
                 sendmsg,
                 c_time
             )
@@ -188,7 +188,7 @@ async def rename_doc(bot, message):
                 caption=description,
                 # reply_markup=reply_markup,
                 reply_to_message_id=message.reply_to_message.message_id,
-                progress=progress_for_pyrogram,
+                progress=display_progress,
                 progress_args=(
                     Translation.UPLOAD_START,
                     sendmsg, 
@@ -213,7 +213,7 @@ async def rename_doc(bot, message):
                 )
             except:
                 await sendmsg.delete()
-                await message.reply_text(script.AFTER_SUCCESSFUL_UPLOAD_MSG, quote=True)
+                await message.reply_text(Translation.AFTER_SUCCESSFUL_UPLOAD_MSG, quote=True)
                 
     else:
         await bot.send_message(
