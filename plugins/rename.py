@@ -19,7 +19,7 @@ from pyrogram import filters
 from pyrogram import Client as MaI_BoTs
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply
 
-from helper_funcs import progress_for_pyrogram
+from helper_funcs import display_progress
 
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
