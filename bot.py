@@ -11,7 +11,7 @@ else:
     from config import Config
 
 import pyrogram
-
+from pyrogram import Client as Mai_bOTs
 
 
 if __name__ == "__main__" :
@@ -20,8 +20,8 @@ if __name__ == "__main__" :
     plugins = dict(
         root="plugins"
     )
-    app = pyrogram.Client(
-        "Zee5",
+    app = Mai_bOTs(
+        "Rename Bot",
         bot_token=Config.TG_BOT_TOKEN,
         api_id=Config.APP_ID,
         api_hash=Config.API_HASH,
