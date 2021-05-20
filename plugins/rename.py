@@ -114,12 +114,12 @@ async def rename_doc(bot, message):
     
     if message.from_user.id not in Config.BANNED_USERS:
         file_name = message.text
-        description = script.CUSTOM_CAPTION_UL_FILE.format(newname=file_name)
+        description = Translation.CUSTOM_CAPTION_UL_FILE.format(newname=file_name)
         download_location = Config.DOWNLOAD_LOCATION + "/"
 
         sendmsg = await bot.send_message(
             chat_id=message.chat.id,
-            text=script.DOWNLOAD_START,
+            text=Translation.DOWNLOAD_START,
             reply_to_message_id=message.message_id
         )
         
@@ -137,7 +137,7 @@ async def rename_doc(bot, message):
         if the_real_download_location is not None:
             try:
                 await bot.edit_message_text(
-                    text=script.SAVED_RECVD_DOC_FILE,
+                    text=Translation.SAVED_RECVD_DOC_FILE,
                     chat_id=message.chat.id,
                     message_id=sendmsg.message_id
                 )
@@ -149,7 +149,7 @@ async def rename_doc(bot, message):
             os.rename(the_real_download_location, new_file_name)
             try:
                 await bot.edit_message_text(
-                    text=script.UPLOAD_START,
+                    text=Translation.UPLOAD_START,
                     chat_id=message.chat.id,
                     message_id=sendmsg.message_id
                     )
@@ -190,7 +190,7 @@ async def rename_doc(bot, message):
                 reply_to_message_id=message.reply_to_message.message_id,
                 progress=progress_for_pyrogram,
                 progress_args=(
-                    script.UPLOAD_START,
+                    Translation.UPLOAD_START,
                     sendmsg, 
                     c_time
                 )
@@ -206,7 +206,7 @@ async def rename_doc(bot, message):
                 pass  
             try:
                 await bot.edit_message_text(
-                    text=script.AFTER_SUCCESSFUL_UPLOAD_MSG,
+                    text=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG,
                     chat_id=message.chat.id,
                     message_id=sendmsg.message_id,
                     disable_web_page_preview=True
