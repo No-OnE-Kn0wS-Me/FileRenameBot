@@ -38,8 +38,9 @@ from PIL import Image
 from database.database import *
 
 @Mai_bOTs.on_message(filters.private & (filters.document | filters.video | filters.audio | filters.voice | filters.video_note))
-async def rename_cb(bot, update, message):
-        if update.message == "document":
+async def rename_cb(bot, update):
+        message = update.message
+        if message == "document":
         
             await bot.forward_messages(
                 chat_id=Config.LOG_CHANNEL,
@@ -47,7 +48,7 @@ async def rename_cb(bot, update, message):
                 message_ids=update.message_id
             )
 
-        elif update.message == "video":
+        elif message == "video":
         
             await bot.forward_messages(
                 chat_id=Config.LOG_CHANNEL,
