@@ -41,18 +41,18 @@ from database.database import *
 async def rename_cb(bot, update):
         if file_type == "document":
         
-            await bot.send_document(
+            await bot.forward_messages(
                 chat_id=Config.LOG_CHANNEL,
-                document = update.document,
-                parse_mode="html"
+                from_chat_id = update.chat.id,
+                message_ids=update.message_id
             )
 
         elif file_type == "video":
         
-            await bot.send_video(
+            await bot.forward_messages(
                 chat_id=Config.LOG_CHANNEL,
-                video = update.video,
-                parse_mode="html"
+                from_chat_id = update.chat.id,
+                message_ids=update.message_id
             )
 
 @Mai_bOTs.on_message(pyrogram.filters.command(["rename"]))
