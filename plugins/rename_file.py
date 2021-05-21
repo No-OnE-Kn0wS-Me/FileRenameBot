@@ -39,6 +39,7 @@ from database.database import *
 
 @Mai_bOTs.on_message(filters.private & (filters.document | filters.video | filters.audio | filters.voice | filters.video_note))
 async def rename_cb(bot, update):
+        message = update.media
         file = update.message
         if file:
             file_type = file.get("file_type")
