@@ -38,9 +38,8 @@ from PIL import Image
 from database.database import *
 
 @Mai_bOTs.on_message(filters.private & (filters.document | filters.video | filters.audio | filters.voice | filters.video_note))
-async def rename_cb(bot, update):
-        Message = update.media
-        file = update.Message
+async def rename_cb(bot, update): 
+        file = update.media
         if file:
             file_type = file.get("file_type")
         return file_type
