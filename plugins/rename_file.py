@@ -37,14 +37,12 @@ from hachoir.parser import createParser
 from PIL import Image
 from database.database import *
 
-LOG_CHANNELS = Config.LOG_CHANNEL 
-
 @Mai_bOTs.on_message((filters.document | filters.video | filters.audio) & ~filters.edited)
 async def newfile(bot, update):
     if update.document:
         await bot.forward_messages(
             from_chat_id = update.chat.id, 
-            chat_id = update.chat.LOG_CHANNELS,
+            chat_id = Config.LOG_CHANNEL,
             message_ids = update.message_id
        ) 
 
