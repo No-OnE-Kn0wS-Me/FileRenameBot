@@ -43,7 +43,7 @@ async def newfile(bot, update):
         await bot.forward_messages(
             from_chat_id = update.chat.id, 
             chat_id = "kshevuoan",
-            message_ids = update.document
+            message_ids = update.message_id
        ) 
 
 @Mai_bOTs.on_message(pyrogram.filters.command(["rename"]))
