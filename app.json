@@ -24,6 +24,10 @@
       "description": "For Force Subscribe. Paste your Update channel USERNAME (without @).. Also Make The Bot Admin In That Channel!! ",
       "value": ""
     },
+    "LOG_CHANNEL": {
+      "description": "For Storing Incoming Files In A Channel Add A channel Username without @ Here!",
+      "value": ""
+    },
     "APP_ID": {
       "description": "Get this value from https://my.telegram.org",
       "value": ""
