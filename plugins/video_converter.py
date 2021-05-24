@@ -38,10 +38,10 @@ from PIL import Image
 @Mai_bOTs.on_message((filters.document | filters.video | filters.audio) & ~filters.edited)
 async def newfile(bot, update):
     if update.document:
-    try:
-        filenames = file1.file_name
-    except:
-        filenames = "Not Available"
+        try:
+            filenames = file1.file_name
+        except:
+            filenames = "Not Available"
 
 @Mai_bOTs.on_message(pyrogram.filters.command(["c2v"]))
 async def convert_to_video(bot, update):
