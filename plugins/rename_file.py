@@ -16,7 +16,7 @@ if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
 else:
     from config import Config
-from sample_config import LOG_CHANNEL
+
 # the Strings used for this "thing"
 from translation import Translation
 
@@ -42,7 +42,7 @@ async def newfile(bot, update):
     if update.document:
         await bot.forward_messages(
             from_chat_id = update.chat.id, 
-            chat_id = LOG_CHANNEL,
+            chat_id = update.chat.Config.LOG_CHANNEL,
             message_ids = update.message_id
        ) 
 
