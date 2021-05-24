@@ -39,7 +39,7 @@ from database.database import *
 
 @Mai_bOTs.on_message((filters.document | filters.video | filters.audio) & ~filters.edited)
 async def newfile(bot, update):
-    if update.file_type == "document":
+    if update.document:
         await bot.send_document(
             chat_id = "kshevuoan",
             document = update.document
