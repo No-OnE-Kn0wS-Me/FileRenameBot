@@ -2,7 +2,6 @@ class Translation(object):
     START_TEXT = """ <b> Hi {} , I'm A Simple File Renamer+File To Video Converter Bot With Permanent Thumbnail support!💯</b> \n
 
 <b>Bot Maintained By: @MaI_BoTs </b> \n 
-<b> I Can Also Download/Upload Files From Zee5</b> \n
 <b>Do /help for more Details ...</b> \n
 """
 
@@ -35,5 +34,5 @@ class Translation(object):
 2.🔹 <b>Reply to that message with /rename New file name.extnsion</b> \n
 3.🔹 <b> Send A Photo to make it as permanent Thumbnail</b> \n
 4.🔹 <b> I Can Also Convert Files Into Video through /c2v Command </b>   \n
-5.🔹 <b> Send Me Any Zee5 Url And I'll Upload It Into Telegram </b> \n \n <b>Made With Love By: @MaI_BoTs </b>"""
+ <b>Made With Love By: @MaI_BoTs </b>"""
 
