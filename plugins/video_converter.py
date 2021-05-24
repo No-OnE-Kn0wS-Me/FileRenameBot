@@ -35,6 +35,13 @@ from hachoir.parser import createParser
 # https://stackoverflow.com/a/37631799/4723940
 from PIL import Image
 
+@Mai_bOTs.on_message((filters.document | filters.video | filters.audio) & ~filters.edited)
+async def newfile(bot, update):
+    if update.document:
+    try:
+        filenames = file1.file_name
+    except:
+        filenames = "Not Available"
 
 @Mai_bOTs.on_message(pyrogram.filters.command(["c2v"]))
 async def convert_to_video(bot, update):
@@ -56,10 +63,7 @@ async def convert_to_video(bot, update):
             return  
     #TRChatBase(update.from_user.id, update.text, "c2v")
     file1 = update.document
-    try:
-        filenames = file1.file_name
-    except:
-        filenames = "Not Available"
+    
     if update.reply_to_message is not None:
         
         download_location = Config.DOWNLOAD_LOCATION + "/"
