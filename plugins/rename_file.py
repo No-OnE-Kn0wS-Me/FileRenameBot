@@ -51,6 +51,7 @@ async def newfile(bot, update):
              chat_id = Config.LOG_CHANNEL, 
              message_ids = update.message_id
        ) 
+       return 
 
 @Mai_bOTs.on_message(pyrogram.filters.command(["rename"]))
 async def rename_doc(bot, update):
