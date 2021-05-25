@@ -129,7 +129,6 @@ async def convert_to_video(bot, update):
             await bot.send_video(
                 chat_id=update.chat.id,
                 video=the_real_download_location,
-                caption=f"<b>{file_name}</b>",
                 duration=duration,
                 width=width,
                 height=height,
