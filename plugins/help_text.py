@@ -109,7 +109,7 @@ async def cb_handler(client: Mai_bOTs , query: CallbackQuery):
             ]
         )
      )
-     elif data == "bstart":
+    elif data == "bstart":
         await query.message.edit_text(
             text=Translation.START_TEXT,
             disable_web_page_preview = True,
