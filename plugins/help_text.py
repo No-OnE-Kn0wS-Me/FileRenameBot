@@ -65,15 +65,16 @@ async def help_user(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('Rename', callback_data = "rnme"),
-                    InlineKeyboardButton('File To Video', callback_data = "f2v")
+                    InlineKeyboardButton('📝Rename', callback_data = "rnme"),
+                    InlineKeyboardButton('📂File To Video', callback_data = "f2v")
                 ],
                 [
-                    InlineKeyboardButton('Custom Thumbnail', callback_data = "cthumb"),
-                    InlineKeyboardButton('About', callback_data = "about")
+                    InlineKeyboardButton('🎞️Custom Thumbnail', callback_data = "cthumb"),
+                    InlineKeyboardButton('💬About', callback_data = "about")
                 ],
                 [
-                    InlineKeyboardButton('Close', callback_data = "closedata")
+                    InlineKeyboardButton('🔒Close', callback_data = "closedata"),
+                    InlineKeyboardButton('⬅️Back', callback_data = "bstart")
                 ]
             ]
         )
