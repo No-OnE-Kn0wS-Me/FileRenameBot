@@ -14,7 +14,7 @@ import os
 import sqlite3
 from pyrogram import filters
 from pyrogram import Client as Mai_bOTs
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, Message
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel 
 
 
@@ -83,7 +83,7 @@ async def help_user(bot, update):
 async def cb_handler(bot, query: CallbackQuery):
     data = query.data
     if data == "rnme":
-        await query.bot.send_message(
+        await query.message.send_message(
             text=Translation.RENAME_HELP,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
@@ -95,7 +95,7 @@ async def cb_handler(bot, query: CallbackQuery):
             )
         )
     elif data == "f2v":
-        await query.bot.send_message(
+        await query.message.send_message(
             text=Translation.C2V_HELP,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
@@ -107,7 +107,7 @@ async def cb_handler(bot, query: CallbackQuery):
             )
         )
     elif data == "cthumb":
-        await query.bot.send_message(
+        await query.message.send_message(
             text=Translation.THUMBNAIL_HELP,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
@@ -119,7 +119,7 @@ async def cb_handler(bot, query: CallbackQuery):
             )
         )
     elif data == "ghelp":
-        await query.bot.send_message(
+        await query.message.send_message(
             text=Translation.THUMBNAIL_HELP,
             disable_web_page_preview = True,
             reply_markup=InlineKeyboardMarkup(
@@ -139,7 +139,7 @@ async def cb_handler(bot, query: CallbackQuery):
         )
      )
     elif data == "about":
-        await query.bot.send_message(
+        await query.message.send_message(
             text=Translation.ABOUT_ME,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
