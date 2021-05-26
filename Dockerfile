@@ -1,5 +1,8 @@
 FROM ubuntu:20.04
 
+sudo add-apt-repository ppa:jon-severinsson/ffmpeg
+sudo apt-get update
+sudo apt-get install ffmpeg
 
 RUN mkdir ./app
 RUN chmod 777 ./app
