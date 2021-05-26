@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# (c) Shrimadhav U K
+# (c) Shrimadhav U K & @No_OnE_Kn0wS_Me
 
 # the logging things
 import logging
@@ -80,11 +80,11 @@ async def help_user(bot, update):
         reply_to_message_id=update.message_id
     )
 
-@Bot.on_callback_query()
+@Mai_bOTs.on_callback_query()
 async def cb_handler(bot, query: CallbackQuery):
     data = query.data
     if data == "rnme":
-        await query.bot.send_message(
+        await query.message.send_message(
             text=Translation.RENAME_HELP,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
@@ -96,7 +96,7 @@ async def cb_handler(bot, query: CallbackQuery):
             )
         )
     elif data == "f2v":
-        await query.bot.send_message(
+        await query.message.send_message(
             text=Translation.C2V_HELP,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
@@ -108,7 +108,7 @@ async def cb_handler(bot, query: CallbackQuery):
             )
         )
     elif data == "cthumb":
-        await query.bot.send_message(
+        await query.message.send_message(
             text=Translation.THUMBNAIL_HELP,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
@@ -120,7 +120,7 @@ async def cb_handler(bot, query: CallbackQuery):
             )
         )
     elif data == "about":
-        await query.bot.send_message(
+        await query.message.send_message(
             text=Translation.ABOUT_ME,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
