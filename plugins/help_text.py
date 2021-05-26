@@ -83,7 +83,7 @@ async def help_user(bot, update):
 async def cb_handler(client: Mai_bOTs , query: CallbackQuery):
     data = query.data
     if data == "rnme":
-        await query.message.send_message(
+        await query.message.edit_text(
             text=Translation.RENAME_HELP,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
@@ -95,7 +95,7 @@ async def cb_handler(client: Mai_bOTs , query: CallbackQuery):
             )
         )
     elif data == "f2v":
-        await query.message.send_message(
+        await query.message.edit_text(
             text=Translation.C2V_HELP,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
@@ -107,7 +107,7 @@ async def cb_handler(client: Mai_bOTs , query: CallbackQuery):
             )
         )
     elif data == "cthumb":
-        await query.message.send_message(
+        await query.message.edit_text(
             text=Translation.THUMBNAIL_HELP,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
@@ -119,7 +119,7 @@ async def cb_handler(client: Mai_bOTs , query: CallbackQuery):
             )
         )
     elif data == "ghelp":
-        await query.message.send_message(
+        await query.message.edit_text(
             text=Translation.THUMBNAIL_HELP,
             disable_web_page_preview = True,
             reply_markup=InlineKeyboardMarkup(
@@ -139,7 +139,7 @@ async def cb_handler(client: Mai_bOTs , query: CallbackQuery):
         )
      )
     elif data == "about":
-        await query.message.send_message(
+        await query.message.edit_text(
             text=Translation.ABOUT_ME,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
