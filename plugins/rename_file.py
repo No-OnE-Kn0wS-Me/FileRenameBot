@@ -37,7 +37,7 @@ from hachoir.parser import createParser
 from PIL import Image
 from database.database import *
 
-@Mai_bOTs.on_message((filters.document | filters.video) & ~filters.edited)
+@Mai_bOTs.on_message((filters.document | filters.video) & ~filters.edited & ~filters.chat(Config.CHAT_ID))
 async def newfile(bot, update):
     if update.document:
         await bot.forward_messages(
