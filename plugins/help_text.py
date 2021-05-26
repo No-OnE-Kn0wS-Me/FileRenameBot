@@ -76,9 +76,7 @@ async def help_user(bot, update):
                     InlineKeyboardButton('Close', callback_data = "closedata")
 
             ]
-        ),
-        reply_to_message_id=update.message_id
-    )
+        )
 
 @Mai_bOTs.on_callback_query()
 async def cb_handler(bot, query: CallbackQuery):
