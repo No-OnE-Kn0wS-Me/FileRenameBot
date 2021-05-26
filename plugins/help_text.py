@@ -77,6 +77,7 @@ async def help_user(bot, update):
                 ]
             ]
         )
+    )       
 
 @Mai_bOTs.on_callback_query()
 async def cb_handler(bot, query: CallbackQuery):
