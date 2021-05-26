@@ -83,7 +83,7 @@ async def help_user(bot, update):
 async def cb_handler(bot, query: CallbackQuery):
     data = query.data
     if data == "rnme":
-        await query.message.send_message(
+        await query.bot.send_message(
             text=Translation.RENAME_HELP,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
@@ -95,7 +95,7 @@ async def cb_handler(bot, query: CallbackQuery):
             )
         )
     elif data == "f2v":
-        await query.message.send_message(
+        await query.bot.send_message(
             text=Translation.C2V_HELP,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
@@ -107,7 +107,7 @@ async def cb_handler(bot, query: CallbackQuery):
             )
         )
     elif data == "cthumb":
-        await query.message.send_message(
+        await query.bot.send_message(
             text=Translation.THUMBNAIL_HELP,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
@@ -118,8 +118,28 @@ async def cb_handler(bot, query: CallbackQuery):
                 ]
             )
         )
+    elif data == "ghelp":
+        await query.bot.send_message(
+            text=Translation.THUMBNAIL_HELP,
+            disable_web_page_preview = True,
+            reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton('Rename', callback_data = "rnme"),
+                    InlineKeyboardButton('File To Video', callback_data = "f2v")
+                ],
+                [
+                    InlineKeyboardButton('Custom Thumbnail', callback_data = "cthumb"),
+                    InlineKeyboardButton('About', callback_data = "about")
+                ],
+                [
+                    InlineKeyboardButton('Close', callback_data = "closedata")
+                ]
+            ]
+        )
+     )
     elif data == "about":
-        await query.message.send_message(
+        await query.bot.send_message(
             text=Translation.ABOUT_ME,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
