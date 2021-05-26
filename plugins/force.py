@@ -53,7 +53,7 @@ async def text(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                        InlineKeyboardButton("🔒 Close", callback_data = "close")
+                        InlineKeyboardButton("Help", callback_data = "ghelp")
                 ],
                 [
                     InlineKeyboardButton('Support Channel', url='https://t.me/Mai_bOTs'),
