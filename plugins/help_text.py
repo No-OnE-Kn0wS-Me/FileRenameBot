@@ -74,7 +74,7 @@ async def help_user(bot, update):
                 ],
                 [
                     InlineKeyboardButton('Close', callback_data = "closedata")
-
+                ]
             ]
         )
 
