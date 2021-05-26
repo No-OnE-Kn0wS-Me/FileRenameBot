@@ -71,10 +71,6 @@ async def help_user(bot, update):
                 [
                     InlineKeyboardButton('🎞️Custom Thumbnail', callback_data = "cthumb"),
                     InlineKeyboardButton('💬About', callback_data = "about")
-                ],
-                [
-                    InlineKeyboardButton('🔒Close', callback_data = "closedata"),
-                    InlineKeyboardButton('⬅️Back', callback_data = "bstart")
                 ]
             ]
         )
@@ -109,26 +105,6 @@ async def cb_handler(client: Mai_bOTs , query: CallbackQuery):
             ]
         )
      )
-    elif data == "bstart":
-        await query.message.edit_text(
-            text=Translation.START_TEXT,
-            disable_web_page_preview = True,
-            reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                        InlineKeyboardButton("Help", callback_data = "ghelp")
-                ],
-                [
-                    InlineKeyboardButton('Support Channel', url='https://t.me/Mai_bOTs'),
-                    InlineKeyboardButton('Feedback', url='https://t.me/No_OnE_Kn0wS_Me')
-                ],
-                [
-                    InlineKeyboardButton('Other Bots', url='https://t.me/Mai_bOTs/17'),
-                    InlineKeyboardButton('Source', url='https://github.com/No-OnE-Kn0wS-Me/FileRenameBot')
-                ]
-            ]
-        )
-     )
     elif data == "cthumb":
         await query.message.edit_text(
             text=Translation.THUMBNAIL_HELP,
@@ -155,9 +131,6 @@ async def cb_handler(client: Mai_bOTs , query: CallbackQuery):
                 [
                     InlineKeyboardButton('Custom Thumbnail', callback_data = "cthumb"),
                     InlineKeyboardButton('About', callback_data = "about")
-                ],
-                [
-                    InlineKeyboardButton('Close', callback_data = "closedata")
                 ]
             ]
         )
