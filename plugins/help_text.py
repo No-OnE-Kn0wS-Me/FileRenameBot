@@ -80,7 +80,7 @@ async def help_user(bot, update):
     )       
 
 @Mai_bOTs.on_callback_query()
-async def cb_handler(bot, query: CallbackQuery):
+async def cb_handler(client: Bot , query: CallbackQuery):
     data = query.data
     if data == "rnme":
         await query.message.send_message(
