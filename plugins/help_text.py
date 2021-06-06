@@ -40,8 +40,6 @@ def GetExpiryDate(chat_id):
 
 @Mai_bOTs.on_message(pyrogram.filters.command(["help"]))
 async def help_user(bot, update):
-    # logger.info(update)
-    #TRChatBase(update.from_user.id, update.text, "/help")
     update_channel = Config.UPDATE_CHANNEL
     if update_channel:
         try:
@@ -50,7 +48,6 @@ async def help_user(bot, update):
                await update.reply_text(" Sorry, You are **B A N N E D**")
                return
         except UserNotParticipant:
-            #await update.reply_text(f"Join @{update_channel} To Use Me")
             await update.reply_text(
                 text="**Please Join My Update Channel Before Using Me..**",
                 reply_markup=InlineKeyboardMarkup([
