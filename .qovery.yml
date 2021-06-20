@@ -1,0 +1,15 @@
+---
+application:
+  name: "filerenamebot"
+  project: "renamebot"
+  organization: "QoveryCommunity"
+databases:
+- type: "MYSQL"
+  name: "renamebotsj"
+  version: "8.0"
+routers:
+- name: "main-filerenamebot"
+  routes:
+  - application_name: "filerenamebot"
+    paths:
+    - "/*"
