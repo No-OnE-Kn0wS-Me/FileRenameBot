@@ -8,9 +8,9 @@
     "source",
     "Rename"
   ],
-  "success_url": "https://t.me/Mai_bOTs",
+  "success_url": "https://t.me/rename1robot",
   "website": "https://github.com/No-OnE-Kn0wS-Me",
-  "repository": "https://github.com/No-OnE-Kn0wS-Me/Renamebot",
+  "repository": "https://github.com/No-OnE-Kn0wS-Me/FileRenameBot",
   "env": {
     "WEBHOOK": {
       "description": "Setting this to ANYTHING will enable webhooks when in env mode",
@@ -21,7 +21,7 @@
       "value": ""
     },
     "UPDATE_CHANNEL": {
-      "description": "For Force Subscribe. Paste your Update channel USERNAME (without @).. Also Make The Bot Admin In That Channel!! ",
+      "description": "For Force Subscribe. Paste your channel Username (without @).. Also Make The Bot Admin In That Channel!! ",
       "value": ""
     },
     "APP_ID": {
@@ -32,12 +32,8 @@
       "description": "Get this value from https://my.telegram.org",
       "value": ""
     },
-    "AUTH_USERS": {
-      "description": "allow only pre-defined users to use this bot",
-      "value": ""
-    },
     "BANNED_USERS": {
-      "description": "Banned Unwanted members..",
+      "description": "Id's Of Users Which You don't Want To Use The Bot..",
       "value": "",
       "required": false
     },
