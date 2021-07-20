@@ -10,7 +10,7 @@
   ],
   "success_url": "https://t.me/Zero_two_renamer_bot",
   "website": "https://github.com/Darling-Code002",
-  "repository": "",
+  "repository": "https://github.com/Darling-Code002/FileRenameBot",
   "env": {
     "WEBHOOK": {
       "description": "Setting this to ANYTHING will enable webhooks when in env mode",
