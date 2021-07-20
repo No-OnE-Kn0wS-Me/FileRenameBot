@@ -8,9 +8,9 @@
     "source",
     "Rename"
   ],
-  "success_url": "https://t.me/rename1robot",
-  "website": "https://github.com/No-OnE-Kn0wS-Me",
-  "repository": "https://github.com/No-OnE-Kn0wS-Me/FileRenameBot",
+  "success_url": "https://t.me/Zero_two_renamer_bot",
+  "website": "",
+  "repository": "https://github.com/Darling-Code002/FileRenameBot",
   "env": {
     "WEBHOOK": {
       "description": "Setting this to ANYTHING will enable webhooks when in env mode",
@@ -22,7 +22,7 @@
     },
     "UPDATE_CHANNEL": {
       "description": "For Force Subscribe. Paste your channel Username (without @).. Also Make The Bot Admin In That Channel!! ",
-      "value": ""
+      "value": "https://t.me/fateunionchat"
     },
     "APP_ID": {
       "description": "Get this value from https://my.telegram.org",
