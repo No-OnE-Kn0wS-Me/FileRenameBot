@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 # (c) Shrimadhav U K & @No_OnE_Kn0wS_Me
 
-# the logging things
 import logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -30,28 +29,35 @@ from helper_funcs.display_progress import progress_for_pyrogram
 
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel 
 from pyrogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
-
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 # https://stackoverflow.com/a/37631799/4723940
 from PIL import Image
 from database.database import *
+from database.db import *
 
-#@Mai_bOTs.on_message((filters.document | filters.video) & ~filters.edited & ~filters.chat(chat_id))
-#@Mai_bOTs.on_message((filters.document | filters.video) & ~filters.edited)
-#async def newfile(bot, update):
-    #if update.document:
-        #await bot.forward_messages(
-            #from_chat_id = update.chat.id, 
-            #chat_id = Config.LOG_CHANNEL,
-            #message_ids = update.message_id
-       #) 
-    #elif update.video:
-         #await bot.forward_messages(
-             #from_chat_id = update.chat.id, 
-             #chat_id = Config.LOG_CHANNEL, 
-             #message_ids = update.message_id
-       #)  
+@Mai_bOTs.on_message(pyrogram.filters.command(["scaption"]))
+async def set_caption(bot, update):
+    if len(update.command) == 1:
+        await update.reply_text(
+            "Custom Caption \n\n you can use this command to set your own caption  \n\n Usage : /scaption Your caption text \n\n note : For current file name use : <code>{filename}</code>", 
+            quote = True, 
+            reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton('Show Current Caption', callback_data = "shw_caption")      
+                ],
+                [
+                    InlineKeyboardButton('Delete Caption', callback_data = "d_caption")
+                ]
+            ]
+        ) 
+        )
+    else:
+        command, CSTM_FIL_CPTN = update.text.split(' ', 1)
+        await update_cap(update.from_user.id, CSTM_FIL_CPTN)
+        await update.reply_text(f"**--Your Caption--:**\n\n{CSTM_FIL_CPTN}", quote=True)
+
 
 @Mai_bOTs.on_message(pyrogram.filters.command(["rename"]))
 async def rename_doc(bot, update):
@@ -60,12 +66,11 @@ async def rename_doc(bot, update):
         try:
             user = await bot.get_chat_member(update_channel, update.chat.id)
             if user.status == "kicked":
-               await update.reply_text(" Sorry, You are **B A N N E D**")
+               await update.reply_text(" Sorry,You've Been Banned From Using Meh!")
                return
         except UserNotParticipant:
-            #await update.reply_text(f"Join @{update_channel} To Use Me")
             await update.reply_text(
-                text="**Please Join My Update Channel Before Using Me..**",
+                text="**Due To The Huge Traffic Only Channel Members Can Use This Bot Means You Need To Join The Below Mentioned Channel Before Using Me! **",
                 reply_markup=InlineKeyboardMarkup([
                     [ InlineKeyboardButton(text="Join My Updates Channel", url=f"https://t.me/{update_channel}")]
               ])
@@ -84,10 +89,16 @@ async def rename_doc(bot, update):
             return
         description = Translation.CUSTOM_CAPTION_UL_FILE
         download_location = Config.DOWNLOAD_LOCATION + "/"
+        caption_text = await get_caption(update.from_user.id)
+        try:
+           caption_text2 = caption_text.caption.format(filename = file_name)
+        except:
+           caption_text2 =f"<code>{file_name}</code>"
+           pass 
         a = await bot.send_message(
-            chat_id=update.chat.id,
-            text=Translation.DOWNLOAD_START,
-            reply_to_message_id=update.message_id
+        chat_id=update.chat.id,
+        text=Translation.DOWNLOAD_START,
+        reply_to_message_id=update.message_id
         )
         c_time = time.time()
         the_real_download_location = await bot.download_media(
@@ -149,8 +160,11 @@ async def rename_doc(bot, update):
                 chat_id=update.chat.id,
                 document=new_file_name,
                 thumb=thumb_image_path,
-                caption=f"<b>{file_name}</b>",
-                # reply_markup=reply_markup,
+                caption=f"{caption_text2}",
+                parse_mode = "html",
+                reply_markup=InlineKeyboardMarkup([
+                    [ InlineKeyboardButton(text="𝚂ᴜᴘᴘᴏʀᴛ 𝙲ʜᴀɴɴᴇʟ", url=f"https://t.me/Mai_bOTs")]
+              ]), 
                 reply_to_message_id=update.reply_to_message.message_id,
                 progress=progress_for_pyrogram,
                 progress_args=(
@@ -175,5 +189,6 @@ async def rename_doc(bot, update):
             chat_id=update.chat.id,
             text=Translation.REPLY_TO_DOC_FOR_RENAME_FILE,
             reply_to_message_id=update.message_id
-        )
+       )
+    
 
