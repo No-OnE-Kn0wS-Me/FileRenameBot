@@ -1,4 +1,4 @@
-# - File Rename Bot
+# - File Rename Bott
 
 <p align="center">
   <a href="https://github.com/No-OnE-Kn0wS-Me/FileRenameBot/stargazers">
