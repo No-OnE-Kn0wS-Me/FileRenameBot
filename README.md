@@ -12,7 +12,7 @@
   </a>  
 </p>
 
-->**An Multi purpose bot which can :-**
+->**An Multi-purpose bot which can :-**
 * ✅Rename telegram files into any formats <pre>(Like Renaming Video Files Into Audio File Or Images Into Stickers, Can Be Rename Any File To Most Of The Available Extensions 🤔 I gus) </pre>
 * ✅Convert files into video
 * ✅Supports custom caption/ permanent thumbnail
